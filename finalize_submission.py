@@ -41,7 +41,9 @@ def main(url):
         for path in sorted(root.rglob('*')):
             rel=path.relative_to(root)
             if (path.is_file() and path.suffix not in {'.zip','.pyc','.tmp'}
-                and '__pycache__' not in rel.parts and rel.parts[0] not in {'output','.git'}):
+                and '__pycache__' not in rel.parts
+                and rel.parts[0] not in {'output','.git','checks_rerun','fresh_cartpole','fresh_deepdish','probe_rerun'}
+                and not any(part.startswith('.') for part in rel.parts if part != '.gitignore')):
                 z.write(path,rel.as_posix())
     print('Updated:',root/'Assignment1_RL_Report.pdf')
     print('Created:',archive)

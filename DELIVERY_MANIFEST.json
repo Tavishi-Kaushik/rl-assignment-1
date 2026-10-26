@@ -4,32 +4,200 @@
     "sha256": "03ff52a9db2d57e697bd87887c850d2b760fe08b670668ae8beda14bc2efc5f5"
   },
   "Assignment1_RL_Report.pdf": {
-    "bytes": 1414476,
-    "sha256": "20803636f77547763d0d9aaf818178a6c8765dbdd20d71435f88246cba76d9a5"
+    "bytes": 1800580,
+    "sha256": "921e2fb511c54ca67638109a80a001f50dc2e6631b1dfd0be8f54cbd395bd172"
+  },
+  "DEEPDISH_UPDATE_NOTES.md": {
+    "bytes": 2230,
+    "sha256": "0b761ef901113873de2725522199461a7df655b4cf4391779c1a2ae20d9291c4"
   },
   "PACKAGING_QA.json": {
-    "bytes": 760,
-    "sha256": "a5f2fa365105d003b5133e75cc2ea2c574b0fd6bacba8aca21d0dfdd7211a31a"
+    "bytes": 1299,
+    "sha256": "f7a1886858dd617953ce81221225f367886ba576a1f5dbe051879c1fcbe6a848"
   },
   "README.md": {
-    "bytes": 7218,
-    "sha256": "45db9e58d8e56b584831ea25374e80a771f805787fbbe4be75275b30a0521fac"
+    "bytes": 9163,
+    "sha256": "e5097e2f34f74f2fe68d7677ac5937bf0329f2f7ae3195785e1a202aee4e4f02"
   },
   "START_HERE.ipynb": {
-    "bytes": 4233,
-    "sha256": "eb7cc86c183516b012c6abf1c71a7af457b05006ac2b4e6f2635126226f78854"
+    "bytes": 4297,
+    "sha256": "66688142ae3a4bf9d34c0b9cb300a6386f0076001446c0571af98e6fe7dd185a"
+  },
+  "audit_deepdish.py": {
+    "bytes": 13742,
+    "sha256": "76b7d63c838516ecccb28afd994b418f8a80dfe06e0381c5d709c15f8e7f816c"
   },
   "build_submission_pdf.py": {
-    "bytes": 46154,
-    "sha256": "9999832472d5a9256eba6fce8cf46403d94c55973e4e93bc4f5769663d13474c"
+    "bytes": 56543,
+    "sha256": "b2f54a1c394f8a118e4a3b13bb5138239ea622d3b3789df1c7a50e888b0845da"
+  },
+  "deepdish_pong.py": {
+    "bytes": 13659,
+    "sha256": "f15968c85b0bd8f76c2de4768c7a38e35472752e95df369779f2fbf80efbb70a"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/checkpoint_latest.pt": {
+    "bytes": 9847453,
+    "sha256": "718d77b9449c1dd30b4e10f9f9dfeb1e5b78269871ee3cb6d282007c2563f42b"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/checkpoint_selected.pt": {
+    "bytes": 9847501,
+    "sha256": "e4fc0ca18cce14b976e143095297d4926ae311692aabc6a1c8b2ccde88f23813"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/config.json": {
+    "bytes": 489,
+    "sha256": "5810ffcdc68dcd619d0a500e1eeb3d99379727d20de28a171aefee29fa39e99c"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/final_scores.csv": {
+    "bytes": 31255,
+    "sha256": "806ae633eb29bd6b155bcc420084fd8a0c7772e1b29b6f3cc39ecd128264314f"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/final_summary.json": {
+    "bytes": 607,
+    "sha256": "64ae8d880cfc2ebcffaceacc718e313fd02a57d7db1a391a2a761c4d281c84cb"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/hardware_protocol.json": {
+    "bytes": 1245,
+    "sha256": "bec4bc89fae3fdf567f54aa032d6e3a03d9b7c4d4fc8df711f66f499e0df88ef"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/learning_curve.png": {
+    "bytes": 84873,
+    "sha256": "92bebf92f825a0e4b69b821b7421a3dbbef11d9e18ec517f5ec9a1ca71029771"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/reward_histogram.png": {
+    "bytes": 35424,
+    "sha256": "4f353cc8e121a35bfd72ec298feee388cfd5835901ce6bf3e2fc310c1adf4f9e"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/training.csv": {
+    "bytes": 296715,
+    "sha256": "722845044574e8faa1c241b94053968df6f1c06e10d7a2194ec3ed0f2599325d"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_00400.csv": {
+    "bytes": 1923,
+    "sha256": "8ae7953d3970d312bb77e17948c371eff81f8e17cf3783d45e051284dcea7971"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_00800.csv": {
+    "bytes": 1919,
+    "sha256": "735cc2efddfdeb88310b5787a01c837511e2bd1e01cfb9abdc556be105338e03"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_01200.csv": {
+    "bytes": 1921,
+    "sha256": "a57f879158c30a6792a2ea7939d91d68212655eb125642968e9c5d1de86fa5cf"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_01600.csv": {
+    "bytes": 1925,
+    "sha256": "65d6ff0797f60be6078bb0de1be4324ae1a2b8a36cf998e3c4476d3bfcf498a9"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_02000.csv": {
+    "bytes": 1926,
+    "sha256": "aaedaf9d715fdf2b2f8579e8d5a96ac8b73b03a60cdec67bba8a9eb0889c7fa4"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_02400.csv": {
+    "bytes": 1935,
+    "sha256": "22c93d0690297403058b299b50f04f21ae121faf71388244b2c5669b91da5bc9"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_02800.csv": {
+    "bytes": 1923,
+    "sha256": "8e91bc029dc806f637c8958b7c4758ed4def80cdbf118cb24371e3dbf512a054"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_03200.csv": {
+    "bytes": 1930,
+    "sha256": "a1e96efeda9704159c2b90a0806169b462a6c7031690c56bea2d024707ad7360"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_03600.csv": {
+    "bytes": 1924,
+    "sha256": "c9f818d38679c6f4a99506fc104102d7d86e6450168d1eceb57efb10de8449f6"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_no_baseline_seed7/validation_04000.csv": {
+    "bytes": 1929,
+    "sha256": "5276fe73a2bf417993f442e2a279a339ac3d070f2859552b372cdf2a579ce692"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/checkpoint_latest.pt": {
+    "bytes": 9869789,
+    "sha256": "891392389e8a0caf84862f3086e7d5dee4350339361e0fc349863a74f9f93ee0"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/checkpoint_selected.pt": {
+    "bytes": 9869837,
+    "sha256": "ba1faadb42d2f0f1622615def196f8bdeb2c517ff70f1265b784d8e17ab66d0e"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/config.json": {
+    "bytes": 499,
+    "sha256": "f1f19714d7d461d5ab907b557660536d9092cdcf2210d32e1d089fd3fc0f0383"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/final_scores.csv": {
+    "bytes": 31092,
+    "sha256": "51b20aaef65ba373a9c2a906a4d9fa7c534193115eae297de15cf30ef8f6a6df"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/final_summary.json": {
+    "bytes": 617,
+    "sha256": "db10679058bdcaf6a7c1ca0c4bd8494ac26fe84ad0a2fe5e413557e74de35f5d"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/hardware_protocol.json": {
+    "bytes": 1245,
+    "sha256": "bec4bc89fae3fdf567f54aa032d6e3a03d9b7c4d4fc8df711f66f499e0df88ef"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/learning_curve.png": {
+    "bytes": 81338,
+    "sha256": "723b6f30769ca2a887a8b7ce1b61d00b8e032ad4949531490585f7beb792df6b"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/reward_histogram.png": {
+    "bytes": 37156,
+    "sha256": "9e971905edac008333fd42b71a7334532c5775cff52932f653507912364f221f"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/training.csv": {
+    "bytes": 296950,
+    "sha256": "321cdbeb799af031bf2ba50e9357d02287c79715615fa525d0473501146cb63a"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_00400.csv": {
+    "bytes": 1925,
+    "sha256": "0abfd13f6a7fe6be756ed4b7f5d1c216943355c636e9fb5730698345b215560f"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_00800.csv": {
+    "bytes": 1923,
+    "sha256": "466d2f9677e5c0b31aa25d6179510c11741917621bb6d8b171f01df6541640a9"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_01200.csv": {
+    "bytes": 1928,
+    "sha256": "f87c04d43888a7051f7abb54115f56fc792d455aa1bd9d23b423802e06f89111"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_01600.csv": {
+    "bytes": 1926,
+    "sha256": "c033d3b7010183cbeb2d2e27fca629459b256daedf36f84f4f8b88e64a2712dc"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_02000.csv": {
+    "bytes": 1922,
+    "sha256": "df99c1110db6593a3524de0fc46e9f74837d3b46f063f9206694893107ab69a1"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_02400.csv": {
+    "bytes": 1916,
+    "sha256": "8370e5a6e0c4fb5772e13695c929ff2f01cb22e805361436dfc64472cd9cba37"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_02800.csv": {
+    "bytes": 1918,
+    "sha256": "f4374d1f59f83697df96ebc515a268f510e8c8e74d92bc870a2edc4b62527868"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_03200.csv": {
+    "bytes": 1920,
+    "sha256": "8dc6d62fc72e2737175c5e76ee2c108d4b9e909845827829d6c57fc84b7237b2"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_03600.csv": {
+    "bytes": 1924,
+    "sha256": "825cb943905fb442ac1d8a373232af47b3125b034dbba9047eda6f5d1755f15e"
+  },
+  "deepdish_runs/paired_seed7_b8_e4000/pong_time_baseline_seed7/validation_04000.csv": {
+    "bytes": 1919,
+    "sha256": "feaf9518db49ad5e2ee97bc0f43531536e17cb984c7fadc5bdf62ddadfe24d7c"
   },
   "finalize_submission.py": {
-    "bytes": 2815,
-    "sha256": "3b79362e5d4e32382ac59d6d8788de549d58a6a0aa58dafd3ced61e826d1a2be"
+    "bytes": 2990,
+    "sha256": "5d3f2095b40d7f5289329fe15a93b35488388b6af908d3c93e5b61ea9d46cf4e"
+  },
+  "package_final_update.py": {
+    "bytes": 4037,
+    "sha256": "8aa0434c0cc84238b02170f22a727d3b5c8d4477d9c94b8d63ebcc5261cfebcf"
   },
   "package_notes.json": {
-    "bytes": 2025,
-    "sha256": "9c2109f97406df9f972170f0991d9bf5353169089284f73758d4838de49443bc"
+    "bytes": 2107,
+    "sha256": "080dac46824a862826f1160b81459afd8476b1ebb815dcd8d9bebbb6b875d139"
   },
   "pong_original/pong_results/baseline_training_comparison.png": {
     "bytes": 257204,
@@ -58,14 +226,6 @@
   "pong_original/pong_results/training_comparison.csv": {
     "bytes": 334,
     "sha256": "0b4d028cd7cd23ba73dfa4f3927ac2822176a0678c2008ec33856a43e07571ec"
-  },
-  "pong_original/pong_runs/no_baseline_seed42_lr0001/.checkpoint_00900.pt.0pcDv4": {
-    "bytes": 3407872,
-    "sha256": "ef188d861d242857290835b5b986b599db3967c775c882d3bdfd3356d727e98a"
-  },
-  "pong_original/pong_runs/no_baseline_seed42_lr0001/.checkpoint_01000.pt.Krl0UA": {
-    "bytes": 5242880,
-    "sha256": "adc5484a4c7437f876a28989074a3af17afb30d5f49891338cb7c27c072cfd81"
   },
   "pong_original/pong_runs/no_baseline_seed42_lr0001/checkpoint_00400.pt": {
     "bytes": 9847103,
@@ -110,14 +270,6 @@
   "pong_original/pong_runs/no_baseline_seed42_lr001/training.csv": {
     "bytes": 11574,
     "sha256": "852183c5728fb27f249d7c9fafbdcf2bb33dbef2f338cd27a90ebcb68914cd89"
-  },
-  "pong_original/pong_runs/time_baseline_seed42_lr0001/.checkpoint_00700.pt.xFMLpo": {
-    "bytes": 6815744,
-    "sha256": "c361f3d37e6663af34aae95050f88967c3f05b81c2e673ff128b94abf22d5635"
-  },
-  "pong_original/pong_runs/time_baseline_seed42_lr0001/.checkpoint_01000.pt.T9XaWE": {
-    "bytes": 7077888,
-    "sha256": "51d5473c9eab85b7f3c6c7e46dfae4fa299024b59b11bb3c5b63c80949b96da4"
   },
   "pong_original/pong_runs/time_baseline_seed42_lr0001/checkpoint_00600.pt": {
     "bytes": 9859973,
@@ -423,6 +575,26 @@
     "bytes": 2504,
     "sha256": "8e050aa4f7f54b72f56782feb63f168ff633e48a1a633c46d137c62cf4aeb677"
   },
+  "review/deepdish_audit/no_baseline_learning_curve.png": {
+    "bytes": 104883,
+    "sha256": "dc8afe37c0848bde35982b0578dfa261d0205ddc9f43ae72d2b1941c92281926"
+  },
+  "review/deepdish_audit/no_baseline_reward_histogram.png": {
+    "bytes": 57088,
+    "sha256": "08cce51946ede5ea69d87c6c9c6b9f4ed12474df9928eb43e6b4590c12b9b188"
+  },
+  "review/deepdish_audit/summary.json": {
+    "bytes": 9917,
+    "sha256": "47cb1a00aa64d8844fe9d49e7a1cac3f1d10b1bccd36b6e00f7efda8e6c9f574"
+  },
+  "review/deepdish_audit/time_baseline_learning_curve.png": {
+    "bytes": 121885,
+    "sha256": "1ba2a3fa1a7f320cb7a1b977e1b24739ececc503d6d73aeb852294923ba8065c"
+  },
+  "review/deepdish_audit/time_baseline_reward_histogram.png": {
+    "bytes": 59378,
+    "sha256": "0cca5554150e1cbd2ab232a90953d99d87b2daa2c01d18f5ca38dcabda36f6f3"
+  },
   "review/independent_checks/analytical_gradients.csv": {
     "bytes": 2233,
     "sha256": "2269475e23db4db01a6f4038e56c58a3c81deaab732aa5ea227ddec48c856c70"
@@ -471,8 +643,12 @@
     "bytes": 2820,
     "sha256": "154f187f6107b8716a4efd863d263ed4a2fd6e26075f7db80b6b7d5e61160e3a"
   },
+  "submission_identity.json": {
+    "bytes": 250,
+    "sha256": "1a8e026a924bb4a4255c9af0bb9a81706be36c34f4de7b5e6510396fe72706b7"
+  },
   "verify_submission.py": {
-    "bytes": 4531,
-    "sha256": "b902055b7310c5f812b1a33adebf2adf87e6e6f1ef166fb17127b1f5b856c59f"
+    "bytes": 5136,
+    "sha256": "d3a27d36c8291efe2b42d60aec04e2b498f823bd1b73ff16139108f697235285"
   }
 }

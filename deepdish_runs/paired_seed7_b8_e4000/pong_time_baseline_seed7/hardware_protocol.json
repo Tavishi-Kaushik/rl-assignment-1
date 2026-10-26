@@ -1,0 +1,40 @@
+{
+  "adapter": "hybrid_pong_v1",
+  "adapter_sha256": "f15968c85b0bd8f76c2de4768c7a38e35472752e95df369779f2fbf80efbb70a",
+  "project_loader_sha256": "154f187f6107b8716a4efd863d263ed4a2fd6e26075f7db80b6b7d5e61160e3a",
+  "training_runner_sha256": "dd0b946e3e4c67aa0af8bdde669e95d5515725753d3e984b4138f1bebba24774",
+  "notebook_sha256": "2656327c6104926cfe82ce0938cd742c3980c8fc5c8e86a21ef07505b05751f8",
+  "versions": {
+    "torch": "2.7.1+cu126",
+    "numpy": "2.1.3",
+    "gymnasium": "1.4.0",
+    "ale-py": "0.12.1",
+    "matplotlib": "3.10.0",
+    "pandas": "2.2.3"
+  },
+  "python": "3.11.17 (main, Oct  1 2026, 20:17:42) [GCC 14.3.0]",
+  "cuda_build": "12.6",
+  "gpu": "NVIDIA GeForce GTX 1080",
+  "gpu_capability": [
+    6,
+    1
+  ],
+  "visible_devices": "3",
+  "cuda_device_order": "PCI_BUS_ID",
+  "cublas_workspace_config": ":4096:8",
+  "deterministic_algorithms": true,
+  "torch_threads": 1,
+  "rollout_device": "cpu",
+  "gradient_device": "cuda:0",
+  "objective": "-mean_episodes sum_t gamma**t * (G_t-b_t) * log_prob_t",
+  "gamma": 0.99,
+  "actions": [
+    2,
+    3
+  ],
+  "frameskip": 4,
+  "sticky_action_probability": 0.25,
+  "return_normalization": false,
+  "point_boundary_return_reset": false,
+  "original_files_modified": false
+}

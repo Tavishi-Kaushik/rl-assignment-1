@@ -1,17 +1,25 @@
 {
-  "pdf_pages": 16,
-  "figures": 12,
-  "pdf_visual_review": "passed",
-  "pdf_repository_fields": "three valid empty interactive fields; actual URL not supplied",
-  "packaged_experiment_byte_identity": "passed",
-  "source_and_notebook_compilation": "passed",
-  "raw_500_episode_and_gradient_statistics": "recomputed and matched",
-  "previously_executed_test_suite": {
+  "pdf_pages": 20,
+  "figures": 16,
+  "pdf_visual_review": "Passed: every page reviewed; final revised pages re-rendered and checked.",
+  "pdf_repository_fields": "Completed static identity and clickable actual repository URL.",
+  "repository_url": "https://github.com/Tavishi-Kaushik/rl-assignment-1",
+  "raw_deepdish_input_files_byte_identity": "38/38 files unchanged",
+  "original_training_code_and_adapter_source_hashes": "Match both recorded hardware protocols.",
+  "source_and_finish_notebook_syntax": "Passed",
+  "raw_six_500_episode_summaries": "Recomputed and matched",
+  "new_validation_selection_and_seed_separation": "Passed; 10 validation checkpoints per method; both select episode 4000.",
+  "checkpoint_zip_crcs": "Passed for four new checkpoint files.",
+  "previous_mathematical_suite": {
     "methods": 17,
     "passed": true,
     "log": "review/independent_checks/test_log.txt"
   },
-  "packaging_runtime_test_rerun": "Full suite not rerun: PyTorch absent; runtime dependency directory read-only. Numerical results-only verification passed.",
-  "finalization_workflow": "tested in separate temporary copy; dummy test URL not included in delivery",
-  "training_performed": false
+  "current_runtime_tensor_loading": false,
+  "current_runtime_math_suite_rerun": false,
+  "reason": "PyTorch absent in report-packaging runtime. Optional reproducible command: python audit_deepdish.py --load-checkpoints",
+  "new_deepdish_gradient_variance_measurement": false,
+  "training_performed_for_report": false,
+  "grader_access_confirmed": false,
+  "canvas_submission_performed": false
 }

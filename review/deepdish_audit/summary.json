@@ -1,0 +1,315 @@
+{
+  "passed": true,
+  "parameter_updates": 0,
+  "tensor_loading_performed": false,
+  "audit_python": "3.12.14",
+  "audit_numpy": "2.3.5",
+  "experiments": {
+    "no_baseline": {
+      "config": {
+        "game": "pong",
+        "environment": "ALE/Pong-v5",
+        "gamma": 0.99,
+        "learning_rate": 0.001,
+        "episodes": 4000,
+        "batch_size": 8,
+        "seed": 7,
+        "baseline": "no_baseline",
+        "baseline_alpha": 0.1,
+        "checkpoint_every": 400,
+        "validation_episodes": 30,
+        "final_episodes": 500,
+        "loss": "-sum_t gamma^t * G_t * log_prob_t",
+        "return_normalization": false,
+        "point_boundary_return_reset": false,
+        "source_sha256": "2656327c6104926cfe82ce0938cd742c3980c8fc5c8e86a21ef07505b05751f8"
+      },
+      "selected_episode": 4000,
+      "final": {
+        "n": 500,
+        "mean": -20.286,
+        "sample_sd": 0.8658541486957414,
+        "se": 0.03872217470167777,
+        "approximate_95_ci": [
+          -20.36189546241529,
+          -20.210104537584712
+        ],
+        "minimum": -21.0,
+        "maximum": -17.0,
+        "wins": 0,
+        "full_loss_21": 246,
+        "terminated": 500,
+        "truncated": 0,
+        "mean_discounted_return": -0.9382948378034637,
+        "mean_episode_length": 1090.57,
+        "reward_counts": {
+          "-21": 246,
+          "-20": 176,
+          "-19": 61,
+          "-18": 9,
+          "-17": 8
+        }
+      },
+      "validation": {
+        "400": {
+          "mean_reward": -20.2,
+          "sample_sd": 0.7611243951073873,
+          "mean_discounted_return": -1.3265573632752103
+        },
+        "800": {
+          "mean_reward": -20.533333333333335,
+          "sample_sd": 0.68144538746106,
+          "mean_discounted_return": -1.3026746940360012
+        },
+        "1200": {
+          "mean_reward": -20.733333333333334,
+          "sample_sd": 0.5832922809856745,
+          "mean_discounted_return": -1.2335135298901996
+        },
+        "1600": {
+          "mean_reward": -20.7,
+          "sample_sd": 0.5959634332684375,
+          "mean_discounted_return": -1.1915213742027633
+        },
+        "2000": {
+          "mean_reward": -20.466666666666665,
+          "sample_sd": 0.68144538746106,
+          "mean_discounted_return": -1.0665013463866275
+        },
+        "2400": {
+          "mean_reward": -20.133333333333333,
+          "sample_sd": 0.9371024061116424,
+          "mean_discounted_return": -1.1497364393241714
+        },
+        "2800": {
+          "mean_reward": -20.666666666666668,
+          "sample_sd": 0.546672273590534,
+          "mean_discounted_return": -1.2020548259167836
+        },
+        "3200": {
+          "mean_reward": -20.333333333333332,
+          "sample_sd": 0.6608945522512667,
+          "mean_discounted_return": -1.0707876730470478
+        },
+        "3600": {
+          "mean_reward": -20.566666666666666,
+          "sample_sd": 0.6260623155792927,
+          "mean_discounted_return": -1.1523123029057996
+        },
+        "4000": {
+          "mean_reward": -20.033333333333335,
+          "sample_sd": 0.8502873077655143,
+          "mean_discounted_return": -1.0577295577329104
+        }
+      },
+      "checkpoints": {
+        "checkpoint_selected.pt": {
+          "sha256": "e4fc0ca18cce14b976e143095297d4926ae311692aabc6a1c8b2ccde88f23813",
+          "bytes": 9847501,
+          "zip_crc_passed": true
+        },
+        "checkpoint_latest.pt": {
+          "sha256": "718d77b9449c1dd30b4e10f9f9dfeb1e5b78269871ee3cb6d282007c2563f42b",
+          "bytes": 9847453,
+          "zip_crc_passed": true
+        }
+      },
+      "training": {
+        "episodes": 4000,
+        "optimizer_updates": 500,
+        "environment_steps": 4078859,
+        "first_100_mean": -20.48,
+        "last_100_mean": -20.41,
+        "best_100_mean": -20.080000000000002,
+        "best_window_end": 2450,
+        "first_100_mean_discounted_return": -1.4713381201946063,
+        "last_100_mean_discounted_return": -0.9616960393411226,
+        "truncated": 0
+      }
+    },
+    "time_baseline": {
+      "config": {
+        "game": "pong",
+        "environment": "ALE/Pong-v5",
+        "gamma": 0.99,
+        "learning_rate": 0.001,
+        "episodes": 4000,
+        "batch_size": 8,
+        "seed": 7,
+        "baseline": "time_baseline",
+        "baseline_alpha": 0.1,
+        "checkpoint_every": 400,
+        "validation_episodes": 30,
+        "final_episodes": 500,
+        "loss": "-sum_t gamma^t * (G_t - b_t) * log_prob_t",
+        "return_normalization": false,
+        "point_boundary_return_reset": false,
+        "source_sha256": "2656327c6104926cfe82ce0938cd742c3980c8fc5c8e86a21ef07505b05751f8"
+      },
+      "selected_episode": 4000,
+      "final": {
+        "n": 500,
+        "mean": -18.926,
+        "sample_sd": 1.6870733335767392,
+        "se": 0.07544821313809534,
+        "approximate_95_ci": [
+          -19.073878497750666,
+          -18.77812150224933
+        ],
+        "minimum": -21.0,
+        "maximum": -13.0,
+        "wins": 0,
+        "full_loss_21": 128,
+        "terminated": 500,
+        "truncated": 0,
+        "mean_discounted_return": 0.13197177125981058,
+        "mean_episode_length": 1210.964,
+        "reward_counts": {
+          "-21": 128,
+          "-20": 62,
+          "-19": 115,
+          "-18": 79,
+          "-17": 98,
+          "-16": 5,
+          "-15": 4,
+          "-14": 5,
+          "-13": 4
+        }
+      },
+      "validation": {
+        "400": {
+          "mean_reward": -20.5,
+          "sample_sd": 0.8610338613230188,
+          "mean_discounted_return": -1.2145100975715644
+        },
+        "800": {
+          "mean_reward": -20.666666666666668,
+          "sample_sd": 0.6064784348631228,
+          "mean_discounted_return": -1.108817178111054
+        },
+        "1200": {
+          "mean_reward": -20.433333333333334,
+          "sample_sd": 0.8172001541568767,
+          "mean_discounted_return": -0.8112812934549515
+        },
+        "1600": {
+          "mean_reward": -20.3,
+          "sample_sd": 0.651258728182957,
+          "mean_discounted_return": -0.5515645384107773
+        },
+        "2000": {
+          "mean_reward": -19.933333333333334,
+          "sample_sd": 0.7396799556440673,
+          "mean_discounted_return": -0.23053001636284684
+        },
+        "2400": {
+          "mean_reward": -19.533333333333335,
+          "sample_sd": 1.1665845619713493,
+          "mean_discounted_return": -0.007621605920835371
+        },
+        "2800": {
+          "mean_reward": -19.666666666666668,
+          "sample_sd": 1.1547005383792512,
+          "mean_discounted_return": -0.03909050177603128
+        },
+        "3200": {
+          "mean_reward": -19.466666666666665,
+          "sample_sd": 1.3578211078487255,
+          "mean_discounted_return": -0.03760893670599108
+        },
+        "3600": {
+          "mean_reward": -19.333333333333332,
+          "sample_sd": 1.3476245597431755,
+          "mean_discounted_return": 0.07516221171812464
+        },
+        "4000": {
+          "mean_reward": -19.1,
+          "sample_sd": 1.5613875350094093,
+          "mean_discounted_return": 0.1011309090230234
+        }
+      },
+      "checkpoints": {
+        "checkpoint_selected.pt": {
+          "sha256": "ba1faadb42d2f0f1622615def196f8bdeb2c517ff70f1265b784d8e17ab66d0e",
+          "bytes": 9869837,
+          "zip_crc_passed": true
+        },
+        "checkpoint_latest.pt": {
+          "sha256": "891392389e8a0caf84862f3086e7d5dee4350339361e0fc349863a74f9f93ee0",
+          "bytes": 9869789,
+          "zip_crc_passed": true
+        }
+      },
+      "training": {
+        "episodes": 4000,
+        "optimizer_updates": 500,
+        "environment_steps": 4178805,
+        "first_100_mean": -20.41,
+        "last_100_mean": -18.82,
+        "best_100_mean": -18.66,
+        "best_window_end": 3985,
+        "first_100_mean_discounted_return": -1.381545576139387,
+        "last_100_mean_discounted_return": 0.16052435707775672,
+        "truncated": 0
+      }
+    }
+  },
+  "paired_difference": {
+    "n": 500,
+    "mean": 1.36,
+    "sample_sd": 1.8786854227985246,
+    "se": 0.08401736627430868,
+    "approximate_95_ci": [
+      1.195325962102355,
+      1.524674037897645
+    ],
+    "minimum": -4.0,
+    "maximum": 8.0
+  },
+  "protocol": {
+    "adapter": "hybrid_pong_v1",
+    "adapter_sha256": "f15968c85b0bd8f76c2de4768c7a38e35472752e95df369779f2fbf80efbb70a",
+    "project_loader_sha256": "154f187f6107b8716a4efd863d263ed4a2fd6e26075f7db80b6b7d5e61160e3a",
+    "training_runner_sha256": "dd0b946e3e4c67aa0af8bdde669e95d5515725753d3e984b4138f1bebba24774",
+    "notebook_sha256": "2656327c6104926cfe82ce0938cd742c3980c8fc5c8e86a21ef07505b05751f8",
+    "versions": {
+      "torch": "2.7.1+cu126",
+      "numpy": "2.1.3",
+      "gymnasium": "1.4.0",
+      "ale-py": "0.12.1",
+      "matplotlib": "3.10.0",
+      "pandas": "2.2.3"
+    },
+    "python": "3.11.17 (main, Oct  1 2026, 20:17:42) [GCC 14.3.0]",
+    "cuda_build": "12.6",
+    "gpu": "NVIDIA GeForce GTX 1080",
+    "gpu_capability": [
+      6,
+      1
+    ],
+    "visible_devices": "3",
+    "cuda_device_order": "PCI_BUS_ID",
+    "cublas_workspace_config": ":4096:8",
+    "deterministic_algorithms": true,
+    "torch_threads": 1,
+    "rollout_device": "cpu",
+    "gradient_device": "cuda:0",
+    "objective": "-mean_episodes sum_t gamma**t * (G_t-b_t) * log_prob_t",
+    "gamma": 0.99,
+    "actions": [
+      2,
+      3
+    ],
+    "frameskip": 4,
+    "sticky_action_probability": 0.25,
+    "return_normalization": false,
+    "point_boundary_return_reset": false,
+    "original_files_modified": false
+  },
+  "limitations": [
+    "Conditional evaluation intervals, not training-seed uncertainty.",
+    "No fresh gradient-variance experiment for the seed-7 models.",
+    "CSV/source/hash integrity is not proof of successful RL learning.",
+    "Tensor loading is checked only with --load-checkpoints; default checks ZIP CRCs."
+  ]
+}

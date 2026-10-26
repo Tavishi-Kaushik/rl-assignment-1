@@ -68,6 +68,15 @@ def main(root, skip_suite=False, results_only=False):
     np.testing.assert_allclose(values,[s['without_baseline'],s['with_baseline']],rtol=1e-12)
     assert len(read_rows(root/'review/pong_diagnostics/episodes.csv'))==80
     print('Gradient moments/arrays and the 80-episode diagnostic checked.')
+    if (root/'deepdish_runs/paired_seed7_b8_e4000').is_dir():
+        from audit_deepdish import audit
+        extra = audit(root, load_checkpoints=not results_only)
+        for variant, run in extra['experiments'].items():
+            stats = run['final']
+            print(f'DeepDish {variant}: train=4000, N={stats["n"]}, '
+                  f'mean={stats["mean"]:.3f}, sample SD={stats["sample_sd"]:.6f}, '
+                  f'checkpoint={run["selected_episode"]}')
+        print('DeepDish validation selection, seed separation, source hashes and checkpoint integrity checked.')
     if results_only:
         print('RESULTS-ONLY MODE: mathematical test suite and checkpoint tensor loading were not rerun.')
     identity=root/'submission_identity.json'
@@ -82,5 +91,5 @@ if __name__=='__main__':
     ap.add_argument('--root',default=str(Path(__file__).resolve().parent))
     ap.add_argument('--skip-suite',action='store_true')
     ap.add_argument('--results-only',action='store_true',
-                    help='Check raw numerical evidence without PyTorch or game training.')
+                    help='Check original and DeepDish raw numerical evidence without PyTorch or game training.')
     args=ap.parse_args();main(args.root,args.skip_suite,args.results_only)

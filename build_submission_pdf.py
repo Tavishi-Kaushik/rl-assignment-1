@@ -136,6 +136,15 @@ def main(args):
     assert checks['passed'] and checks['tests_run'] == 17
     audit = json.loads((REVIEW / 'audit.json').read_text())
     assert all(x['n'] == 500 for x in audit['experiments'].values())
+    from audit_deepdish import audit as audit_deepdish, make_plots
+    deep = audit_deepdish(BASE)
+    deep_plots = REVIEW / 'deepdish_audit'
+    deep_plots.mkdir(parents=True, exist_ok=True)
+    make_plots(BASE, deep_plots)
+    dn = deep['experiments']['no_baseline']
+    db = deep['experiments']['time_baseline']
+    def ci_text(stats):
+        return '[%.3f, %.3f]' % tuple(stats['approximate_95_ci'])
 
     # 1. Identity and concise outcome overview.
     story.append(Paragraph('Assignment 1<br/>Reinforcement Learning', styles['title']))
@@ -156,27 +165,30 @@ def main(args):
     h('Summary of findings', 2)
     p('The shuttle MDP has a dispatch threshold of 13 passengers. Finite-horizon enumeration, '
       'value iteration and policy iteration agree within explicit numerical error bounds. '
-      'CartPole improves substantially over the random-action reference. Pong remains close '
-      'to losing every point: the implementation checks pass, but effective full-game play '
-      'was not learned within the completed training budget.')
+      'CartPole improves over the random-action reference. A completed 4,000-episode '
+      'DeepDish follow-up improves Pong scoring with a time baseline, but both new '
+      'policies still lose all 500 final games. Correct implementation is not evidence '
+      'that the task has been solved.')
     table(['Frozen policy', 'Selected\nepisode', 'Mean\nreward', 'Sample\nSD', 'Approx. 95% CI'], [
         ['CartPole: no baseline', 600, '141.990', '43.098', '[138.212, 145.768]'],
         ['CartPole: time baseline', 400, '344.440', '75.673', '[337.807, 351.073]'],
-        ['Pong: no baseline', 400, '-20.406', '0.774', '[-20.474, -20.338]'],
-        ['Pong: time baseline', 600, '-20.552', '0.629', '[-20.607, -20.497]'],
+        ['Pong initial: no baseline', 400, '-20.406', '0.774', '[-20.474, -20.338]'],
+        ['Pong initial: time baseline', 600, '-20.552', '0.629', '[-20.607, -20.497]'],
+        ['Pong DeepDish: no baseline', dn['selected_episode'], f"{dn['final']['mean']:.3f}", f"{dn['final']['sample_sd']:.3f}", ci_text(dn['final'])],
+        ['Pong DeepDish: time baseline', db['selected_episode'], f"{db['final']['mean']:.3f}", f"{db['final']['sample_sd']:.3f}", ci_text(db['final'])],
     ], [147, 58, 69, 62, 163.28])
     p('Each row uses 500 held-out episodes with stochastic action sampling and no parameter '
       'updates. Sample SD uses N-1. The approximate interval is mean +/- 1.96 SD/sqrt(500). '
       'It measures evaluation uncertainty conditional on the selected model, not uncertainty '
       'across independently trained models.')
     h('Evidence and scope', 2)
-    p('CartPole results in this report are the completed recovery runs, for which raw scores '
-      'and saved models are available. They are new runs, not reconstructed original weights. '
-      'Pong and shuttle results are the original completed experiments. Historical CartPole '
-      'outputs remain preserved but are not substituted for the recovered measurements.')
-    p('The report contains all required value/policy plots, four training curves with '
-      '100-episode moving averages, four 500-episode histograms, model assumptions, task-specific '
-      'edge cases, quantitative validation, reproduction directions and a three-month plan.')
+    p('CartPole uses the completed recovery runs, not reconstructed lost weights. '
+      'The initial Pong experiments (seed 42, 1,000 episodes, batch 4) remain reported '
+      'alongside the DeepDish follow-up (seed 7, 4,000 episodes, batch 8). These are '
+      'different protocols, not a controlled single-factor comparison.')
+    p('Included: all three shuttle plots, six learning curves with 100-episode averages, '
+      'six 500-episode histograms, quantitative validation, edge cases, execution '
+      'directions and a three-month validation plan.', 'small')
 
     # 2. Shuttle MDP and finite horizon.
     page('1. Shuttle dispatch: model and enumeration')
@@ -225,7 +237,7 @@ def main(args):
         ['Final two periods', 'All states wait. Largest two-period holding saving is 30+0.95(30)=58.5<100. Last/penultimate value errors are both 0. At s=20 the two-period value is 83.70.'],
         ['Free dispatch: c_f=0', 'All 200 nonempty states dispatch; V(0)=0 because arrivals never exceed capacity. This tests the dispatch-cost tradeoff.'],
         ['Free holding: c_h=0', 'All 201 states wait; maximum |V|=0. Dispatching has no compensating benefit.'],
-        ['No discount: gamma=0', 'Only immediate cost matters; all states wait and V(s)=2s exactly. Maximum error is 0.'],
+        ['Zero discount factor', 'At gamma=0 only immediate cost matters; all states wait and V(s)=2s exactly. Maximum error is 0.'],
         ['Zero capacity: K=0', 'Dispatch cannot reduce the queue, so all states wait. At s=200, V=400/(1-0.95)=8000; computed error 1.893e-7.'],
         ['Independent enumeration', 'Enumerate 2 x 2^5=64 two-period contingent plans at six representative states. Their minimum agrees with the original backward-induction implementation.'],
         ['Cap sensitivity', 'Changing the cap from 200 to 400 gives zero value differences and zero policy disagreements over states 0-50. This is local, not a claim about states near the cap.'],
@@ -254,13 +266,15 @@ def main(args):
     table(['Setting', 'CartPole-v1', 'ALE/Pong-v5'], [
         ['Observation / network', '4 -> 128 Tanh -> 2; 898 trainable parameters', '6,400 -> 128 ReLU -> 2; 819,586 parameters'],
         ['Discount / optimizer', 'gamma=0.95; Adam, lr=0.01', 'gamma=0.99; Adam, lr=0.001'],
-        ['Completed main budget', '1,000 episodes; batch 8; 125 updates per method', '1,000 episodes; batch 4; 250 updates per method'],
+        ['Completed budgets', '1,000 episodes; batch 8; 125 updates per method', 'Initial: 1,000 / batch 4 / 250 updates. DeepDish: 4,000 / batch 8 / 500 updates.'],
         ['Policy actions', '0 and 1', 'Network outputs 0/1 map to environment 2/3 only'],
         ['Evaluation', '50 episodes per checkpoint; 500 final', '30 episodes per checkpoint; 500 final'],
     ], [113, 183, 203.28])
     p('Gymnasium provides the required CartPole-v1 and ALE/Pong-v5 IDs [1,2]; the latter is '
       'Pong-v5 in the ALE namespace, not a switch to v4. Pong keeps frameskip=4 and '
-      'repeat_action_probability=0.25. Both games ran on CPU; no multi-GPU or deepdish workflow was used.')
+      'repeat_action_probability=0.25. Initial experiments ran on CPU. The additional '
+      'DeepDish study used exactly one GTX 1080: CPU rollouts and CUDA gradient computation. '
+      'The objective, network, action restriction and environment settings were unchanged.')
     h('Pong image processing', 2)
     p('Copy the RGB frame, crop rows 35:195, take every second row/column in channel 0, '
       'remove background values 144 and 109, and map other pixels to 1. The network receives '
@@ -309,14 +323,14 @@ def main(args):
       'lower gradient-estimator variance; they measure different quantities.')
 
     # 8. Pong no baseline.
-    page('7. Part 1(b): Pong without a baseline')
+    page('7. Part 1(b): initial Pong without a baseline')
     p('Only actions 2 (RIGHT) and 3 (LEFT) are available to the policy. A real-environment '
       'check detected ball motion and scoring without FIRE. Ten random-action episodes '
       'gave mean -20.60, SD 0.52, mean length 972.1 and zero truncations. A 100-episode '
       'lr=0.01 pilot ended with last-20 mean -21.00. A fresh lr=0.001 run was therefore '
       'used for the 1,000-episode experiment; it remained weak.')
     fig(PG / 'no_baseline_seed42_lr0001/learning_curve.png',
-        'Pong Part 1 training score and its 100-episode moving average.', 220)
+        'Initial seed-42 Pong Part 1 training score and 100-episode moving average.', 220)
     p('First-100 mean=-20.39; last-100 mean=-20.65; best 100-episode mean=-20.26 '
       '(window ending 128). Starting discounted return changed from -1.3536 to -1.2145, '
       'so the optimized objective and full-game score need not improve together.')
@@ -328,7 +342,7 @@ def main(args):
       'effective Pong play or a convincing improvement over the small random reference.')
 
     # 9. Pong baseline.
-    page('8. Part 2(b): Pong with a time baseline')
+    page('8. Part 2(b): initial Pong with a time baseline')
     p('The same lagged EMA baseline (alpha=0.1), loss convention and post-actor update timing '
       'are used for Pong. The baseline vector grows to cover new episode lengths, with zero '
       'initial values for new entries. Only visited time indices are updated. All other '
@@ -344,10 +358,87 @@ def main(args):
       'The paired score difference (baseline minus no baseline) is -0.146, approximate '
       '95% CI [-0.234,-0.058]. Thus this selected baseline model scored worse, despite '
       'the measured gradient-variance reduction. This is not a conclusion that baselines '
-      'generally harm Pong; only one training initialization was tested per main method.')
+      'generally harm Pong; this is one initialization in the initial protocol. '
+      'The separate matched DeepDish experiment follows on the next pages.')
+
+    page('9. DeepDish follow-up: Pong without a baseline')
+    p('After the initial weak Pong results, both methods were rerun from scratch with '
+      'seed 7, 4,000 training episodes, batch size 8, Adam lr=0.001 and gamma=0.99. '
+      'This gives 500 optimizer updates per method, versus 250 in the initial runs. '
+      'No return normalization, point-boundary reset, entropy bonus or altered action set '
+      'was introduced. Validation used 30 episodes every 400 training episodes.')
+    fig(deep_plots / 'no_baseline_learning_curve.png',
+        'DeepDish Part 1: all 4,000 training scores and the trailing 100-episode mean.', 210)
+    p(f"First-100 mean={dn['training']['first_100_mean']:.2f}; last-100 mean="
+      f"{dn['training']['last_100_mean']:.2f}; best 100-episode mean="
+      f"{dn['training']['best_100_mean']:.2f}, ending at episode {dn['training']['best_window_end']}. "
+      'The full-game score remains nearly flat. Validation selected episode 4,000 '
+      '(mean -20.033); this choice was fixed before its 500-episode final test.')
+    fig(deep_plots / 'no_baseline_reward_histogram.png',
+        'DeepDish Part 1: 500 frozen stochastic-policy scores, selected episode 4,000.', 210)
+    p(f"Final mean={dn['final']['mean']:.3f}; sample SD={dn['final']['sample_sd']:.6f}; "
+      f"approximate 95% CI={ci_text(dn['final'])}. Range -21 to -17; 246/500 games "
+      'score -21; all 500 are losses with no truncation. Mean starting discounted '
+      f"return={dn['final']['mean_discounted_return']:.6f}. This longer-budget configuration "
+      'also failed to produce effective full-game play.')
+
+    page('10. DeepDish follow-up: Pong with a time baseline')
+    p('This run matches the new no-baseline architecture, initialization seed, training '
+      'environment seed schedule, optimizer, episode budget, batch size and validation rule. '
+      'The only algorithmic difference within the pair is the same lagged time EMA baseline '
+      '(alpha=0.1), computed from previous batches and updated after the actor step.')
+    fig(deep_plots / 'time_baseline_learning_curve.png',
+        'DeepDish Part 2: all 4,000 training scores and the trailing 100-episode mean.', 210)
+    p(f"First-100 mean={db['training']['first_100_mean']:.2f}; last-100 mean="
+      f"{db['training']['last_100_mean']:.2f}; best 100-episode mean="
+      f"{db['training']['best_100_mean']:.2f}, ending at episode {db['training']['best_window_end']}. "
+      'Validation selected episode 4,000 (mean -19.100). The late training curve improves, '
+      'although it is still far from winning.')
+    fig(deep_plots / 'time_baseline_reward_histogram.png',
+        'DeepDish Part 2: 500 frozen stochastic-policy scores, selected episode 4,000.', 210)
+    p(f"Final mean={db['final']['mean']:.3f}; sample SD={db['final']['sample_sd']:.6f}; "
+      f"approximate 95% CI={ci_text(db['final'])}. Range -21 to -13; 128/500 games "
+      'score -21; all 500 are losses with no truncation. Mean starting discounted '
+      f"return={db['final']['mean_discounted_return']:.6f}: early discounted rewards can "
+      'improve substantially while total game scores remain poor.')
+
+    page('11. DeepDish comparison, selection and validation')
+    table(['Training episode', 'No-baseline validation mean', 'Time-baseline validation mean'], [
+        [ep, f"{dn['validation'][ep]['mean_reward']:.3f}", f"{db['validation'][ep]['mean_reward']:.3f}"]
+        for ep in sorted(dn['validation'])
+    ], [115, 192, 192.28])
+    p('Within seed 7, the baseline-minus-no-baseline paired mean score difference is '
+      f"{deep['paired_difference']['mean']:.3f}, with approximate 95% CI "
+      f"{ci_text(deep['paired_difference'])}. Pairing uses the same 500 environment/action "
+      'seed identifiers; policies can still generate different trajectories. This supports '
+      'a positive conditional score difference, not a guarantee across training seeds. '
+      'Reward SD increases with the baseline; this is not a gradient-variance measurement.')
+    h('Checks of the changed execution path', 2)
+    p('Before training, the student ran the adapter correctness check on DeepDish. '
+      'Pasted console output reports CPU/CUDA relative gradient errors 1.114e-7 '
+      '(no baseline), 1.100e-7 (baseline), and 1.136e-7 for an 824-step real episode. '
+      'Matched CPU/hybrid rollouts had identical actions, rewards and processed frames. '
+      'No optimizer step was taken during these checks. The check can be rerun with --check; '
+      'it verifies the hardware path, not learning success.')
+    p('The CPU actor receives current learner weights before every episode, and weights '
+      'stay fixed through each batch. Only physical GPU 3 was visible as logical cuda:0. '
+      'Recorded stack: Python 3.11.17, PyTorch 2.7.1+cu126, NumPy 2.1.3, Gymnasium '
+      '1.4.0, ALE 0.12.1. Per-run hardware_protocol.json files agree, and all four '
+      'recorded source hashes match the packaged adapter, runner, loader and notebook.')
+    p('The final-file audit checks 4,000 ordered training records per run, all ten '
+      '30-episode validation sets, seed separation, the selection rule and all 500 raw '
+      'final scores. It reproduces means, sample SDs and paired intervals; checkpoint '
+      'ZIP CRCs pass. This packaging runtime has no PyTorch, so fresh tensor loading '
+      'was not performed here. An optional --load-checkpoints command checks saved '
+      'model tensors, baseline and all 500 Adam steps on the installed DeepDish environment.')
+    p('Seed-7 environment seed starts: 20,700,000 training; 30,007,000 validation; '
+      '40,007,000 final. Validation/final action seeds start at 307,000/407,000. '
+      'Both methods share this protocol. Compared with the initial study, seed, '
+      'batch size, budget and hardware changed together; no single change can be '
+      'credited for the improvement. No new frozen-gradient variance audit was run.', 'small')
 
     # 10. Variance and practical edges.
-    page('9. Baseline variance and task-specific edge cases')
+    page('12. Baseline variance and task-specific edge cases')
     p('To isolate the baseline effect from a change in policy, freeze the selected baseline '
       'model and its saved baseline. Collect 100 fresh independent trajectories; compute '
       'the complete gradient twice on each identical trajectory, once with and once without '
@@ -355,14 +446,15 @@ def main(args):
       'gradient covariance: the sum of component variances using N-1.')
     table(['Frozen model', 'Without baseline', 'With baseline', 'Reduction'], [
         ['CartPole, checkpoint 400', '18,895.833738', '2.545579', '99.9865%'],
-        ['Pong, checkpoint 600', '626.465462', '88.160239', '85.9274%'],
+        ['Initial Pong, seed 42 / 600', '626.465462', '88.160239', '85.9274%'],
     ], [161, 125, 111, 102.28])
     p('CartPole statistics were recomputed from the saved 100 x 898 gradient arrays; Pong '
       'statistics were recomputed from saved online second moments over 819,586 components. '
       'The estimated with/without variance ratios are 0.000134716 and 0.140726. The same '
       'trajectories and fixed weights make this a direct estimator comparison, unlike '
       'comparing reward SDs of separately trained policies. These local estimates have '
-      'no confidence intervals on the variance ratio and are not convergence guarantees.')
+      'no confidence intervals on the variance ratio and are not convergence guarantees. '
+      'These numbers concern the original listed checkpoints, not the new DeepDish models.')
     p('CartPole returns saturate near 1/(1-0.95)=20 as episodes lengthen. A time baseline '
       'near 20 removes substantial noise but can leave small gradients. Lower measured '
       'variance alone does not prove a strong learning signal or justify stopping validation.')
@@ -376,7 +468,7 @@ def main(args):
     ], [126, 373.28])
 
     # 11. Mathematics and short trace.
-    page('10. Independent gradient and short-trajectory checks')
+    page('13. Independent gradient and short-trajectory checks')
     p('The strongest gradient check uses a tiny problem with an independently derived '
       'expectation, not a second implementation of the same recurrence. Two Bernoulli '
       'actions have probabilities p=0.4 and q=0.7, parameterized by logits. Define:')
@@ -410,11 +502,11 @@ def main(args):
       'This establishes tested implementation properties, not successful Pong learning.', 'small')
 
     # 12. More specific Pong failure experiment.
-    page('11. Pong failure investigation: frozen-policy probe')
+    page('14. Initial Pong failure investigation: frozen-policy probe')
     p('A supplementary review-run experiment evaluated four predeclared frozen policies '
       'on 20 fresh episodes each (80 total), without training, model selection or weight '
       'updates. Environment seeds were 10,000,000+i and action seeds 100,000+i. The '
-      '500-episode final evaluations above were not altered. This probe tests two explanations: '
+      'initial 500-episode final evaluations were not altered. This probe tests two explanations: '
       'near-deterministic action collapse, and improvement concentrated in early discounted rewards.')
     table(['Policy', 'Mean full\ngame score', 'Mean discounted\nreturn', 'First point\nwon', 'Mean\nentropy'], [
         ['Untrained seed 42', '-20.55', '-1.408737', '1/20', '0.692492'],
@@ -438,12 +530,12 @@ def main(args):
       'optimized start-of-episode objective. This explains why objective improvement need '
       'not imply comparable score improvement; it does not identify the sole cause of failure.')
     h('What remains unresolved', 2)
-    p('Only 250 optimizer updates were performed per main Pong run, using 819,586 '
-      'parameters, frame-difference inputs and a single initialization seed. Longer budgets, '
-      'batch-size interventions and frame-stack comparisons were not completed. Their '
-      'effects cannot be inferred from the unit tests or this observational probe. The '
-      'failed learning curves and held-out losses are retained rather than replaced with '
-      'unverified improvements.')
+    p('The initial Pong runs had only 250 optimizer updates. The completed DeepDish '
+      'follow-up increased this to 500, with a different seed and batch size, and improved '
+      'baseline scoring without winning games. It does not isolate which cross-protocol '
+      'change mattered. Controlled batch/budget ablations, frame-stack comparisons and '
+      'multiple initialization seeds within each protocol remain uncompleted. Original '
+      'failed learning curves and held-out losses are retained.')
     p('This supplementary probe ran in the assistant review runtime, not the original Colab '
       'training runtime: Python 3.12.14, NumPy 2.3.5, PyTorch 2.14.1+cpu, Gymnasium 1.4.0 '
       'and ALE 0.12.1. Full per-episode diagnostics, first-episode step/scoring traces, '
@@ -452,7 +544,7 @@ def main(args):
       'as 17 additional distinct tests.')
 
     # 13. Selection and provenance.
-    page('12. Checkpoint selection, seeds and reproducibility')
+    page('15. Initial checkpoint selection and reproducibility')
     p('Selection used maximum validation mean undiscounted reward. Ties used validation '
       'discounted return, then the earlier checkpoint for an exact tie. All final evaluations '
       'used fresh seeds and frozen stochastic policies, with no training updates or tuning '
@@ -490,21 +582,22 @@ def main(args):
       'and its weights were preserved; this is a documented metadata correction, not '
       'an experimental change.')
     h('Evidence audit', 2)
-    p('Both uploaded archives passed integrity checks. Selected checkpoints load with '
+    p('Both original uploaded archives passed integrity checks. Their selected checkpoints load with '
       'weights_only=True and finite weights. Every main training log has 1,000 ordered '
-      'episodes. Means and SDs were recomputed from all 500 raw final rewards and matched '
+      'episodes (the separate DeepDish logs each have 4,000). Means and SDs were recomputed from all 500 raw final rewards and matched '
       'the saved summaries. Checkpoint choices were rechecked against validation records; '
       'gradient-variance statistics were rechecked from arrays/moments.')
 
     # 14. Reproduction commands grounded in actual archives.
-    page('13. Execution and validation directions')
+    page('16. Execution and validation directions')
     p('Use the source files supplied with the result archives and the original notebook. '
       'Run full training in a fresh directory to avoid overwriting evidence. CPU is sufficient '
       'for these recorded runs. In Colab, a shell command below can be run with ! at the '
       'start of the cell; execute each command in order. The supplied submission folder '
       'already contains recovery/, pong_original/ and review/, so skip extraction there. '
-      'Recorded versions on page 13 define the reference runtime; record newer versions separately.')
-    code('python -m pip install numpy torch gymnasium ale-py matplotlib pandas\npython -m zipfile -e cartpole_recovery_results.zip recovery\npython -m zipfile -e pong_results_backup.zip pong_original\npython -m zipfile -e RL_Verified_Evidence.zip review')
+      'Use the recorded versions for the relevant experiment; record newer versions separately. '
+      'DeepDish-specific commands are provided on the next page.')
+    code('python -m pip install -r requirements.txt\npython verify_submission.py\npython audit_deepdish.py --load-checkpoints')
     h('A. Fast tests and the independent mathematical oracle', 2)
     code('python recovery/source/run_checks.py --output checks_rerun')
     p('This executes 17 test methods without training the games and writes test_log.txt, '
@@ -537,7 +630,36 @@ def main(args):
       'validation, not another model-selection stage.', 'small')
 
     # 15. Plans, limitations, citations, disclosure.
-    page('14. Additional three-month validation plan')
+    page('17. DeepDish execution and report reproduction')
+    p('The submitted results are already complete. The audit and report commands do not '
+      'train, update weights or roll out new test episodes. Run from the repository root. '
+      'Numerical auditing needs NumPy; plotting additionally needs Matplotlib. The optional '
+      'tensor audit also needs PyTorch.')
+    code('python audit_deepdish.py --make-plots\npython audit_deepdish.py --load-checkpoints\npython build_submission_pdf.py \\\n  --repo https://github.com/Tavishi-Kaushik/rl-assignment-1')
+    p('The audit outputs review/deepdish_audit/summary.json and presentation figures. '
+      'Expected raw means: -20.286 and -18.926; sample SDs: 0.865854 and 1.687073; '
+      'both selected episodes: 4,000. With --load-checkpoints, model shapes and finite '
+      'weights, saved configs/baselines, equal selected/latest weights, and 500 Adam '
+      'steps are checked. ZIP integrity alone does not establish tensor correctness.')
+    h('Reproduce the single-GPU path and a fresh experiment', 2)
+    p('Use the installed DeepDish environment and an allocated single compatible GPU. '
+      'The recorded run used device 3, a GTX 1080, and PyTorch 2.7.1+cu126. Visibility '
+      'is not GPU reservation; follow the shared-server allocation policy. Do not run '
+      'training over submitted evidence. The adapter requires a passing --check with '
+      'matching software/hardware protocol before allowing --train.')
+    code('export CUDA_DEVICE_ORDER=PCI_BUS_ID\nexport CUDA_VISIBLE_DEVICES=3\nexport OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1\npython deepdish_pong.py --check\npython deepdish_pong.py --train --seeds 7 \\\n  --variants no_baseline time_baseline \\\n  --episodes 4000 --batch-size 8 --lr 0.001 \\\n  --checkpoint-every 400 --validation-episodes 30 \\\n  --output fresh_deepdish/paired_seed7_b8_e4000')
+    p('Each variant performs 4,000 training episodes, selects on validation, then runs '
+      '500 held-out episodes. Resume uses the same output path and exact arguments; '
+      'changed source hashes, software or budgets are rejected. CPU Atari simulation '
+      'and action sampling can dominate runtime, so low instantaneous GPU utilization '
+      'is not by itself evidence of a stalled learner.')
+    h('Submission checklist', 2)
+    p('Review this report and the source; push the updated source, raw results and figures '
+      'to Tavishi-Kaushik/rl-assignment-1; ensure the grader has access to this private '
+      'repository; submit the revised PDF on Canvas. The scripts do not change repository '
+      'visibility, invite graders, publish commits or submit to Canvas.')
+
+    page('18. Additional three-month validation plan')
     h('Month 1: replication and independent correctness checks', 2)
     p('Train at least ten independent initialization seeds per configuration under a '
       'predeclared environment-step budget, with disjoint validation/test seeds. Report '
@@ -571,8 +693,9 @@ def main(args):
       'implementations pass independent exact-gradient and task-specific checks. The '
       'baseline substantially reduces empirical gradient variance and the recovered '
       'CartPole baseline model has a higher evaluated mean reward. Neither CartPole '
-      'model reliably reaches 500, and neither Pong model learned effective full-game '
-      'play. More independent training seeds and controlled tuning are needed before '
+      'model reliably reaches 500. The matched DeepDish follow-up yields a 1.36-point '
+      'baseline advantage in Pong, but still no wins in either 500-game test. '
+      'More independent training seeds and controlled tuning are needed before '
       'claiming robust learning performance.')
 
     page('References, evidence and assistance disclosure')
@@ -600,6 +723,7 @@ def main(args):
         ['cartpole_recovery_results.zip', 'New CartPole source, training/validation/final CSVs, selected models, figures, 100-trajectory gradient arrays, executed validation logs and historical notebook evidence.'],
         ['pong_results_backup.zip', 'Original Pong pilot/main logs, baseline/no-baseline checkpoints, final 500-episode scores, figures and variance moments.'],
         ['RL_Verified_Evidence.zip', 'Recomputed audit, local 17-test rerun, uploaded Colab checks, all 80 supplementary Pong probe episodes, source and provenance hashes.'],
+        ['DeepDish_Pong_Final_Results.zip', 'Both completed seed-7 runs: 4,000 training records each, ten validation sets each, 500 final scores each, selected/latest checkpoints, figures and exact hardware/source protocols. Included under deepdish_runs/.'],
     ], [175, 324.28])
     p('The original notebook is preserved in the CartPole archive source/ directory. '
       'The GitHub repository should include that notebook and all scripts used for '
@@ -609,7 +733,8 @@ def main(args):
     h('Assistance disclosure', 2)
     p('ChatGPT assisted with implementation, debugging, test design, interpretation and '
       'report preparation. The main training and final evaluation results were produced '
-      'in the student Colab workflow and retained in the supplied archives. The additional '
+      'in the student Colab workflow and retained in the supplied archives. The matched '
+      '4,000-episode follow-up was executed by the student on DeepDish using one GPU. The additional '
       '80-episode frozen-policy Pong probe and independent test rerun were executed in '
       'the assistant review runtime and are labeled accordingly. Unrun multi-seed and '
       'controlled-ablation experiments are presented only as future work. This assistance '
@@ -635,6 +760,8 @@ def main(args):
         'repository_fields_complete':bool(args.repo), 'figures':figures,
         'training_performed':False, 'report_source':'build_submission_pdf.py',
         'primary_cartpole_data':'new recovery experiment',
+        'deepdish_runs':'paired_seed7_b8_e4000; both variants completed',
+        'deepdish_tensor_loading_in_packaging_runtime':False,
     }, indent=2))
     print(target)
 

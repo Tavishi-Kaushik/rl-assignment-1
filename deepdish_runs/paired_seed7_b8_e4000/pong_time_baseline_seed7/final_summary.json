@@ -1,0 +1,22 @@
+{
+  "game": "pong",
+  "environment": "ALE/Pong-v5",
+  "gamma": 0.99,
+  "learning_rate": 0.001,
+  "episodes": 4000,
+  "batch_size": 8,
+  "seed": 7,
+  "baseline": "time_baseline",
+  "baseline_alpha": 0.1,
+  "checkpoint_every": 400,
+  "validation_episodes": 30,
+  "final_episodes": 500,
+  "loss": "-sum_t gamma^t * (G_t - b_t) * log_prob_t",
+  "return_normalization": false,
+  "point_boundary_return_reset": false,
+  "source_sha256": "2656327c6104926cfe82ce0938cd742c3980c8fc5c8e86a21ef07505b05751f8",
+  "selected_episode": 4000,
+  "mean_reward": -18.926,
+  "sample_sd": 1.6870733335767392,
+  "se": 0.07544821313809534
+}
