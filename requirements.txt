@@ -1,0 +1,8 @@
+numpy
+torch
+gymnasium
+ale-py
+matplotlib
+pandas
+reportlab
+pypdf

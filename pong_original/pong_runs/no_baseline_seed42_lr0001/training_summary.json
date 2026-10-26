@@ -1,0 +1,9 @@
+{
+  "training_episodes": 1000,
+  "first_100_mean_reward": -20.39,
+  "last_100_mean_reward": -20.65,
+  "highest_100_episode_mean": -20.26,
+  "highest_window_ending_episode": 128,
+  "first_100_mean_discounted_return": -1.3536445774694585,
+  "last_100_mean_discounted_return": -1.2144729677016912
+}

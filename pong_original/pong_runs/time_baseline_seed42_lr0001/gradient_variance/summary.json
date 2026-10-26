@@ -1,0 +1,11 @@
+{
+  "checkpoint": "pong_runs/time_baseline_seed42_lr0001/checkpoint_00600.pt",
+  "independent_trajectories": 100,
+  "variance_measure": "trace of sample gradient covariance",
+  "without_baseline": 626.4654624427693,
+  "with_baseline": 88.16023919936336,
+  "variance_ratio_with_over_without": 0.14072641587550763,
+  "estimated_reduction_percent": 85.92735841244924,
+  "baseline_frozen": true,
+  "parameter_updates": 0
+}

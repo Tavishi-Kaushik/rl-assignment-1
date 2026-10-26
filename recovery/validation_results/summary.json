@@ -1,0 +1,21 @@
+{
+  "tests_run": 17,
+  "failures": 0,
+  "errors": 0,
+  "passed": true,
+  "analytical_cases": 20,
+  "max_gradient_error": 4.112720453086638e-08,
+  "source_sha256": "2656327c6104926cfe82ce0938cd742c3980c8fc5c8e86a21ef07505b05751f8",
+  "versions": {
+    "python": "3.13.16",
+    "numpy": "2.1.3",
+    "torch": "2.11.0+cpu",
+    "gymnasium": "1.4.0",
+    "ale-py": "0.12.1",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.0",
+    "reportlab": "not installed"
+  },
+  "training_performed": false,
+  "scope": "Unit and independent analytical checks; not proof of game-learning success"
+}

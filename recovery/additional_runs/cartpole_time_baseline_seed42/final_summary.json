@@ -1,0 +1,22 @@
+{
+  "game": "cartpole",
+  "environment": "CartPole-v1",
+  "gamma": 0.95,
+  "learning_rate": 0.01,
+  "episodes": 1000,
+  "batch_size": 8,
+  "seed": 42,
+  "baseline": "time_baseline",
+  "baseline_alpha": 0.1,
+  "checkpoint_every": 200,
+  "validation_episodes": 50,
+  "final_episodes": 500,
+  "loss": "-sum_t gamma^t * (G_t - b_t) * log_prob_t",
+  "return_normalization": false,
+  "point_boundary_return_reset": false,
+  "source_sha256": "2656327c6104926cfe82ce0938cd742c3980c8fc5c8e86a21ef07505b05751f8",
+  "selected_episode": 400,
+  "mean_reward": 344.44,
+  "sample_sd": 75.67337258664551,
+  "se": 3.384216103808169
+}

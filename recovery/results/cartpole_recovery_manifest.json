@@ -1,0 +1,27 @@
+{
+  "purpose": "New CartPole runs after original checkpoint/CSV backup was unavailable",
+  "historical_source_file": "Assignment1_RL (3).ipynb",
+  "source_sha256": "2656327c6104926cfe82ce0938cd742c3980c8fc5c8e86a21ef07505b05751f8",
+  "model_weights_recovered_from_notebook": false,
+  "historical_outputs_preserved": true,
+  "new_runs_are_not_the_original_seed42_experiment": true,
+  "environment": "CartPole-v1",
+  "gamma": 0.95,
+  "optimizer": "Adam",
+  "learning_rate": 0.01,
+  "episodes_per_variant": 1000,
+  "batch_size": 8,
+  "initialization_seed": 42,
+  "variants": [
+    "no_baseline",
+    "time_baseline"
+  ],
+  "baseline": "lagged time-dependent EMA, alpha=0.1; updated after actor step",
+  "checkpoint_selection": "Highest validation mean reward; discounted return tie-break; earlier exact tie",
+  "validation_episodes": 50,
+  "final_evaluation_episodes_per_variant": 500,
+  "training_environment_seed_start": 24200000,
+  "validation_environment_seed_start": 30042000,
+  "final_environment_seed_start": 40042000,
+  "note": "The initial parameter seed is reused, but environment/action seed protocols differ from historical runs. Keep new measurements and historical results separate. No Pong training is performed."
+}

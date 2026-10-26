@@ -1,0 +1,11 @@
+method,checkpoint_episode,checkpoint_path,evaluation_episodes,mean_score,sample_sd,mean_discounted_return
+no_baseline,200,pong_runs/no_baseline_seed42_lr0001/checkpoint_00200.pt,30,-20.533333333333335,0.6288102248298566,-1.3474872517386036
+no_baseline,400,pong_runs/no_baseline_seed42_lr0001/checkpoint_00400.pt,30,-20.533333333333335,0.6288102248298566,-1.3126987137199408
+no_baseline,600,pong_runs/no_baseline_seed42_lr0001/checkpoint_00600.pt,30,-20.7,0.7022132498578063,-1.2947673474408288
+no_baseline,800,pong_runs/no_baseline_seed42_lr0001/checkpoint_00800.pt,30,-20.866666666666667,0.43417248545530474,-1.2874193260791422
+no_baseline,1000,pong_runs/no_baseline_seed42_lr0001/checkpoint_01000.pt,30,-20.633333333333333,0.49013251785356104,-1.2589256977463306
+time_baseline,200,pong_runs/time_baseline_seed42_lr0001/checkpoint_00200.pt,30,-20.633333333333333,0.5560534167675354,-1.209487672419734
+time_baseline,400,pong_runs/time_baseline_seed42_lr0001/checkpoint_00400.pt,30,-20.733333333333334,0.44977644510880366,-1.050879866418429
+time_baseline,600,pong_runs/time_baseline_seed42_lr0001/checkpoint_00600.pt,30,-20.333333333333332,0.9222660747548282,-1.1289599685543708
+time_baseline,800,pong_runs/time_baseline_seed42_lr0001/checkpoint_00800.pt,30,-20.566666666666666,0.5040069329937308,-0.9447612894281406
+time_baseline,1000,pong_runs/time_baseline_seed42_lr0001/checkpoint_01000.pt,30,-20.5,0.682288239221013,-0.7521514326675366

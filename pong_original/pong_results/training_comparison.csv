@@ -1,0 +1,3 @@
+method,episodes,first_100_mean_score,last_100_mean_score,best_100_mean_score,best_window_end,first_100_mean_discounted_return,last_100_mean_discounted_return
+Without baseline,1000,-20.39,-20.65,-20.26,128,-1.3536445774694585,-1.2144729677016912
+With time baseline,1000,-20.44,-20.56,-20.36,169,-1.3700329493393972,-0.8634677538967627

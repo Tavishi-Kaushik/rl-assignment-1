@@ -1,0 +1,661 @@
+CELL 0
+Python version: 3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]
+NumPy version: 2.1.3
+Setup successful!
+
+
+CELL 1
+Action=0 | Remaining=20 | Cost=40 | Next states=[np.int64(21), np.int64(22), np.int64(23), np.int64(24), np.int64(25)]
+Action=1 | Remaining=5 | Cost=110 | Next states=[np.int64(6), np.int64(7), np.int64(8), np.int64(9), np.int64(10)]
+
+
+CELL 2
+Finite-horizon calculation complete!
+Optimal cost at time 0 with 0 passengers: 576.670168
+Optimal cost at time 0 with 20 passengers: 725.439658
+
+Time-0 policy for states 0 through 20:
+[0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1]
+
+Actions chosen in the final decision period:
+[0]
+
+
+CELL 3
+First dispatch state at time 0: 13
+Dispatches at every state above it: True
+Plot saved to: figures/part_a_finite_horizon_value.png
+
+
+CELL 4
+Final-period maximum value error: 0.000e+00
+Penultimate-period maximum value error: 0.000e+00
+Wait everywhere in final period: True
+Wait everywhere in penultimate period: True
+Computed two-period cost at state 20: 83.7
+Hand-calculated two-period cost at state 20: 83.70
+
+
+CELL 5
+Converged after 429 iterations
+Final maximum update: 9.922e-09
+Infinite-horizon cost at state 0: 576.670168
+Infinite-horizon cost at state 20: 725.439658
+Maximum difference from the 500-period values: 1.836e-07
+Policy disagreements with the time-0 finite-horizon policy: 0
+
+
+CELL 6
+Bellman residual: 9.426e-09
+VI maximum value-error bound: 1.885e-07
+500-period omitted-tail bound: 7.274e-08
+Combined comparison bound: 2.613e-07
+Observed finite/VI difference: 1.836e-07
+Difference within combined bound: True
+
+
+CELL 7
+Round 1: 196 states changed action
+Round 2: 28 states changed action
+Round 3: 22 states changed action
+Round 4: 7 states changed action
+Round 5: 1 states changed action
+Round 6: 0 states changed action
+
+Policy iteration converged!
+Optimal cost at state 0: 576.670168
+Optimal cost at state 20: 725.439658
+Maximum value difference from VI: 1.885e-07
+Policy disagreements with VI: 0
+
+
+CELL 8
+First dispatch state: 13
+Single-threshold policy: True
+
+
+CELL 8
+Policy plot and numerical results saved.
+
+
+CELL 9
+REPRODUCTION CHECK
+Maximum difference from original VI: 2.274e-12
+Policy disagreements: 0
+
+EXPERIMENT 1: FREE DISPATCH
+Dispatches in all 200 nonempty states: True
+Number of nonempty states choosing dispatch: 200
+Cost from an empty station: 0.000000
+
+EXPERIMENT 2: FREE WAITING
+Waits in all 201 states: True
+Maximum absolute value across states: 0.000e+00
+
+
+CELL 10
+EXPERIMENT 3: ZERO DISCOUNT FACTOR
+Waits in all 201 states: True
+Maximum error versus analytical value 2s: 0.000e+00
+
+EXPERIMENT 4: ZERO SHUTTLE CAPACITY
+Waits in all 201 states: True
+Computed cost at state 200: 8000.000000
+Analytical cost at state 200: 8000.000000
+Absolute error at state 200: 1.893e-07
+
+
+CELL 11
+Number of simulation runs: 5000
+Simulated mean discounted cost: 576.289616
+Standard deviation across runs: 31.616584
+Standard error of the mean: 0.447126
+Approximate 95% CI for 300-period mean: [575.413249, 577.165983]
+Maximum omitted-tail cost: 0.002075
+Analytical infinite-horizon cost: 576.670168
+Analytical cost within tail-adjusted interval: True
+
+
+CELL 12
+QUEUE-CAP SENSITIVITY: 200 VERSUS 400
+Maximum value difference over states 0–50: 0.000e+00
+Policy disagreements over states 0–50: 0
+Cost from empty station, cap 200: 576.670168
+Cost from empty station, cap 400: 576.670168
+
+
+CELL 13
+Saved: results/shuttle_summary.json
+Created: shuttle_results.zip
+ZIP size: 427861 bytes
+
+
+CELL 15
+[?25l   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m0.0/12.1 MB[0m [31m?[0m eta [36m-:--:--[0m[2K   [91m━━━━━━━━━━━━━━━━[0m[90m╺[0m[90m━━━━━━━━━━━━━━━━━━━━━━━[0m [32m5.0/12.1 MB[0m [31m149.5 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m [32m12.1/12.1 MB[0m [31m193.2 MB/s[0m eta [36m0:00:01[0m[2K   [91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m[91m╸[0m [32m12.1/12.1 MB[0m [31m184.2 MB/s[0m eta [36m0:00:01[0m[2K   [90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━[0m [32m12.1/12.1 MB[0m [31m91.0 MB/s[0m eta [36m0:00:00[0m
+[?25h
+
+CELL 16
+Gymnasium version: 1.4.0
+PyTorch version: 2.11.0+cpu
+
+Environment: CartPole-v1
+Observation shape: (4,)
+Number of actions: 2
+Maximum episode steps: 500
+Initial state: [ 0.0273956  -0.00611216  0.03585979  0.0197368 ]
+
+
+CELL 17
+Random-action episodes: 100
+Mean reward: 20.44
+Sample standard deviation: 9.93
+Minimum reward: 10
+Maximum reward: 57
+Episodes reaching the 500-step limit: 0
+Episode rewards equal episode lengths: True
+
+
+CELL 18
+CartPolePolicy(
+  (network): Sequential(
+    (0): Linear(in_features=4, out_features=128, bias=True)
+    (1): Tanh()
+    (2): Linear(in_features=128, out_features=2, bias=True)
+  )
+)
+
+Number of trainable parameters: 898
+
+Initial state: [ 0.0273956  -0.00611216  0.03585979  0.0197368 ]
+Action probabilities [left, right]: [0.42083886 0.5791611 ]
+Sum of probabilities: 1.0
+
+
+CELL 19
+HAND-CALCULATED EXAMPLE
+Computed: [2.75 3.5  3.  ]
+Expected: [2.75 3.5  3.  ]
+Maximum absolute error: 0.0
+
+GAMMA = 0
+Computed: [1. 2. 3.]
+Expected: [1. 2. 3.]
+
+GAMMA = 1
+Computed: [6. 5. 3.]
+Expected: [6. 5. 3.]
+
+TEN-STEP CARTPOLE EXAMPLE
+Computed starting return: 8.02526122
+Analytical starting return: 8.02526122
+Final-step return: 1.0
+
+
+CELL 20
+Episode reward: 16.0
+Terminated: True
+Truncated: False
+
+First 10 steps:
+ t | action | P(left) | P(right) | reward | return-to-go
+ 0 |      0 |   0.419 |    0.581 |    1.0 |      11.1975
+ 1 |      1 |   0.457 |    0.543 |    1.0 |      10.7342
+ 2 |      0 |   0.420 |    0.580 |    1.0 |      10.2465
+ 3 |      0 |   0.458 |    0.542 |    1.0 |       9.7332
+ 4 |      0 |   0.497 |    0.503 |    1.0 |       9.1928
+ 5 |      0 |   0.534 |    0.466 |    1.0 |       8.6240
+ 6 |      1 |   0.569 |    0.431 |    1.0 |       8.0253
+ 7 |      0 |   0.538 |    0.462 |    1.0 |       7.3950
+ 8 |      1 |   0.572 |    0.428 |    1.0 |       6.7316
+ 9 |      1 |   0.542 |    0.458 |    1.0 |       6.0333
+
+Loss: 62.454773
+Gradient norm: 62.428841
+Gradient norm is finite: True
+Network weights have NOT been updated.
+
+
+CELL 21
+Episode  200 | Last 100 mean reward:   40.04 | Gradient norm:    50.11
+Episode  400 | Last 100 mean reward:  111.27 | Gradient norm:    77.90
+Episode  600 | Last 100 mean reward:   86.57 | Gradient norm:    51.28
+Episode  800 | Last 100 mean reward:  286.65 | Gradient norm:     7.96
+Episode 1000 | Last 100 mean reward:  138.64 | Gradient norm:    89.53
+
+Training time: 117.5 seconds
+Results saved in: cartpole_runs/no_baseline_seed42_lr001
+
+
+CELL 22
+First 100-episode mean: 33.94
+Last 100-episode mean: 138.64
+Highest 100-episode moving average: 379.70
+Episode where that window ends: 732
+Training episodes reaching reward 500: 17
+Learning curve saved to: cartpole_runs/no_baseline_seed42_lr001/learning_curve.png
+
+
+CELL 23
+Checkpoint | Mean reward | Sample SD | Reached 500
+-----------------------------------------------------------
+       200 |       92.58 |     36.82 |       0.0%
+       400 |      143.22 |     45.00 |       0.0%
+       600 |      172.58 |     16.03 |       0.0%
+       800 |      189.38 |     17.13 |       0.0%
+      1000 |      132.38 |      7.20 |       0.0%
+
+
+CELL 25
+Episode  200 | Last 100 mean reward:   57.96 | Gradient norm:    27.39
+Episode  400 | Last 100 mean reward:   73.14 | Gradient norm:    12.48
+Episode  600 | Last 100 mean reward:  122.31 | Gradient norm:    45.37
+Episode  800 | Last 100 mean reward:  188.76 | Gradient norm:    90.95
+Episode 1000 | Last 100 mean reward:   71.69 | Gradient norm:    18.68
+
+Training time: 76.9 seconds
+Results saved in: cartpole_runs/no_baseline_seed42_lr0003
+
+
+CELL 26
+Checkpoint | Mean reward | Sample SD | Reached 500
+-----------------------------------------------------------
+       200 |       78.62 |     41.35 |       0.0%
+       400 |       67.90 |     28.99 |       0.0%
+       600 |       94.82 |     36.92 |       0.0%
+       800 |      146.54 |     75.00 |       2.0%
+      1000 |       98.76 |     39.47 |       0.0%
+
+
+CELL 27
+FINAL EVALUATION: CARTPOLE WITHOUT A BASELINE
+Selected learning rate: 0.01
+Selected checkpoint: episode 800
+Evaluation episodes: 500
+Mean reward: 191.86
+Sample standard deviation: 16.28
+Approximate 95% CI for mean: [190.43, 193.28]
+Minimum reward: 151
+Maximum reward: 244
+Episodes reaching 500 steps: 0.0%
+
+
+CELL 27
+Evaluation files saved in: cartpole_runs/no_baseline_seed42_lr001/final_evaluation_checkpoint0800
+
+
+CELL 28
+Loss difference when baseline is zero: 0.000e+00
+Updated baseline: [0.275 0.35  0.3   7.   ]
+Expected baseline: [0.275 0.35  0.3   7.   ]
+Update matches prediction: True
+Baseline functions ready. No training performed.
+
+
+CELL 29
+Episode  200 | Last 100 mean reward:  132.42 | Gradient norm:     1.69 | Updated baseline at t=0:  17.87
+Episode  400 | Last 100 mean reward:  266.51 | Gradient norm:     0.31 | Updated baseline at t=0:  19.83
+Episode  600 | Last 100 mean reward:  391.07 | Gradient norm:     0.04 | Updated baseline at t=0:  19.98
+Episode  800 | Last 100 mean reward:  345.77 | Gradient norm:     0.00 | Updated baseline at t=0:  20.00
+Episode 1000 | Last 100 mean reward:  308.27 | Gradient norm:     0.00 | Updated baseline at t=0:  20.00
+
+Training time: 217.8 seconds
+Results saved in: cartpole_runs/time_baseline_seed42_lr001
+
+
+CELL 30
+Final batch gradient norm: 4.439812e-03
+
+Checkpoint | Mean reward | Sample SD | Reached 500
+-----------------------------------------------------------
+       200 |      172.66 |     79.65 |       0.0%
+       400 |      297.72 |    139.51 |      16.0%
+       600 |      382.12 |     78.67 |      10.0%
+       800 |      335.40 |     49.94 |       0.0%
+      1000 |      307.56 |     51.84 |       0.0%
+
+
+CELL 31
+FINAL EVALUATION: CARTPOLE WITH A BASELINE
+Selected learning rate: 0.01
+Selected checkpoint: episode 600
+Evaluation episodes: 500
+Mean reward: 376.36
+Sample standard deviation: 66.56
+Approximate 95% CI for mean: [370.52, 382.19]
+Minimum reward: 100
+Maximum reward: 500
+Episodes reaching 500 steps: 2.6%
+
+
+CELL 31
+Evaluation files saved in: cartpole_runs/time_baseline_seed42_lr001/final_evaluation_checkpoint0600
+
+
+CELL 32
+Processed 25/100 episodes
+Processed 50/100 episodes
+Processed 75/100 episodes
+Processed 100/100 episodes
+
+FROZEN-POLICY GRADIENT VARIANCE
+Checkpoint: baseline model, episode 600
+Independent trajectories: 100
+Without baseline: 2.032806e+04
+With baseline:    2.721566e-01
+Variance ratio (with / without): 1.338822e-05
+Estimated reduction: 99.998661%
+Gradient measurements saved in: cartpole_runs/time_baseline_seed42_lr001/gradient_variance
+
+
+CELL 33
+Created: cartpole_results.zip
+Files included: 51
+Archive size: 2.50 MB
+
+Final evaluation summaries:
+- cartpole_runs/no_baseline_seed42_lr001/final_evaluation_checkpoint0800/summary.json
+- cartpole_runs/time_baseline_seed42_lr001/final_evaluation_checkpoint0600/summary.json
+
+Gradient-variance summary:
+- cartpole_runs/time_baseline_seed42_lr001/gradient_variance/summary.json
+
+
+CELL 36
+ALE version: 0.12.1
+Environment: ALE/Pong-v5
+Frame shape: (210, 160, 3)
+Frame dtype: uint8
+Native number of actions: 6
+Native action meanings: ['NOOP', 'FIRE', 'RIGHT', 'LEFT', 'RIGHTFIRE', 'LEFTFIRE']
+
+Actions our policy will use:
+Policy output 0 -> environment action 2 (RIGHT)
+Policy output 1 -> environment action 3 (LEFT)
+
+PyTorch version: 2.11.0+cpu
+CUDA GPU available: False
+Pong setup successful!
+
+
+CELL 37
+Processed shape: (80, 80)
+Processed dtype: float32
+Processed pixel values: [0. 1.]
+Difference pixel values: [-1.  0.  1.]
+Original RGB frame unchanged: True
+Moving object detected in central play area: True
+
+
+CELL 38
+Episode | Score | Steps | First reward step | Truncated
+-----------------------------------------------------------------
+      1 |   -21 |   946 | 64                | False
+      2 |   -20 |   982 | 64                | False
+      3 |   -21 |  1005 | 64                | False
+      4 |   -21 |   947 | 64                | False
+      5 |   -21 |   887 | 64                | False
+      6 |   -20 |  1041 | 124               | False
+      7 |   -20 |  1102 | 64                | False
+      8 |   -20 |  1102 | 64                | False
+      9 |   -21 |   885 | 64                | False
+     10 |   -21 |   824 | 64                | False
+
+RANDOM-ACTION PONG REFERENCE
+Mean score: -20.60
+Sample standard deviation: 0.52
+Mean steps per episode: 972.1
+Truncated episodes: 0
+Total elapsed time: 22.0 seconds
+Seconds per episode: 2.20
+
+
+CELL 39
+PongPolicy(
+  (network): Sequential(
+    (0): Linear(in_features=6400, out_features=128, bias=True)
+    (1): ReLU()
+    (2): Linear(in_features=128, out_features=2, bias=True)
+  )
+)
+
+Trainable parameters: 819586
+
+UNTRAINED NETWORK: ONE EPISODE
+Score: -21.0
+Steps: 826
+Stored observation shape: (826, 6400)
+First frame difference is zero: True
+Policy action counts [0, 1]: [435 391]
+Terminated: True
+Truncated: False
+Collection time: 5.24 seconds
+Observation storage: 5.04 MB
+No network weights were updated.
+
+
+CELL 40
+PONG GRADIENT CHECK
+Chunked loss: -181.292125
+Full-episode loss: -181.292130
+Chunked gradient norm: 2.741663e+01
+All gradient components finite: True
+Relative gradient difference: 6.907526e-08
+Gradients agree within relative tolerance 1e-5: True
+Chunked gradient calculation time: 0.28 seconds
+
+DISCOUNTED OBJECTIVE
+Episode score: -21.0
+Starting discounted return: -1.788626
+Weight on timestep 500: 0.006570
+
+No optimizer update performed.
+
+
+CELL 41
+Episode  20 | Last 20 mean score: -20.45 | Gradient norm: 1.100e+01 | Elapsed: 0.6 min
+Episode  40 | Last 20 mean score: -20.90 | Gradient norm: 1.555e+01 | Elapsed: 1.1 min
+Episode  60 | Last 20 mean score: -20.90 | Gradient norm: 1.441e+01 | Elapsed: 1.6 min
+Episode  80 | Last 20 mean score: -21.00 | Gradient norm: 1.447e+01 | Elapsed: 2.2 min
+Episode 100 | Last 20 mean score: -21.00 | Gradient norm: 1.197e+01 | Elapsed: 2.7 min
+
+Pilot finished in 2.7 minutes
+Results saved in: pong_runs/no_baseline_seed42_lr001
+
+
+CELL 42
+Reading: pong_runs/no_baseline_seed42_lr001/training.csv
+
+PONG PILOT DIAGNOSTICS
+Episodes logged: 100
+
+First 20 episodes
+Mean score: -20.45
+Mean episode length: 986.8
+Fraction RIGHT (action 2): 0.4557
+Fraction LEFT  (action 3): 0.5443
+Episodes using one action at least 99% of the time: 0/20
+
+Last 20 episodes
+Mean score: -21.00
+Mean episode length: 858.8
+Fraction RIGHT (action 2): 0.3271
+Fraction LEFT  (action 3): 0.6729
+Episodes using one action at least 99% of the time: 0/20
+
+Last 20 episodes:
+Total points won: 0
+Total points lost: 420
+
+No training or parameter updates performed.
+
+
+CELL 43
+Episode  20 | Last 20 mean score: -20.60 | Gradient norm: 1.252e+01 | Elapsed: 0.6 min
+Episode  40 | Last 20 mean score: -20.50 | Gradient norm: 1.678e+01 | Elapsed: 1.2 min
+Episode  60 | Last 20 mean score: -20.15 | Gradient norm: 1.094e+01 | Elapsed: 1.7 min
+Episode  80 | Last 20 mean score: -20.55 | Gradient norm: 1.232e+01 | Elapsed: 2.3 min
+Episode 100 | Last 20 mean score: -20.15 | Gradient norm: 1.154e+01 | Elapsed: 2.9 min
+
+Pilot complete.
+Results saved in: pong_runs/no_baseline_seed42_lr0001
+
+
+CELL 44
+Episode  200 | Last 100 mean score: -20.45 | Gradient norm: 1.412e+01 | Additional time: 3.1 min
+Episode  300 | Last 100 mean score: -20.49 | Gradient norm: 1.281e+01 | Additional time: 6.0 min
+Episode  400 | Last 100 mean score: -20.58 | Gradient norm: 1.266e+01 | Additional time: 8.8 min
+Episode  500 | Last 100 mean score: -20.42 | Gradient norm: 1.257e+01 | Additional time: 11.7 min
+Episode  600 | Last 100 mean score: -20.47 | Gradient norm: 9.268e+00 | Additional time: 14.4 min
+Episode  700 | Last 100 mean score: -20.75 | Gradient norm: 1.567e+01 | Additional time: 17.1 min
+Episode  800 | Last 100 mean score: -20.77 | Gradient norm: 1.685e+01 | Additional time: 19.7 min
+Episode  900 | Last 100 mean score: -20.86 | Gradient norm: 1.007e+01 | Additional time: 22.2 min
+Episode 1000 | Last 100 mean score: -20.65 | Gradient norm: 1.512e+01 | Additional time: 24.9 min
+
+Continuation finished.
+Total episodes: 1000
+Results saved in: pong_runs/no_baseline_seed42_lr0001
+
+
+CELL 45
+TRAINING DIAGNOSTICS
+
+First 100 episodes
+Mean episode reward: -20.390
+Mean starting discounted return: -1.353645
+Mean episode length: 1006.0
+Fraction RIGHT across all actions: 0.5043
+Points won: 61
+Points lost: 2100
+
+Last 100 episodes
+Mean episode reward: -20.650
+Mean starting discounted return: -1.214473
+Mean episode length: 941.4
+Fraction RIGHT across all actions: 0.4128
+Points won: 35
+Points lost: 2100
+
+Highest 100-episode mean: -20.26
+Window ending at episode: 128
+Plot saved to: pong_runs/no_baseline_seed42_lr0001/learning_curve.png
+No parameter updates performed.
+
+
+CELL 46
+Baseline update and variable-length checks passed.
+Episode  100 | Last 100 mean score: -20.44 | Gradient norm: 3.242e+00 | Baseline t=0: -1.253 | Elapsed: 3.2 min
+Episode  200 | Last 100 mean score: -20.44 | Gradient norm: 2.888e+00 | Baseline t=0: -1.212 | Elapsed: 6.2 min
+Episode  300 | Last 100 mean score: -20.55 | Gradient norm: 3.059e+00 | Baseline t=0: -1.137 | Elapsed: 9.0 min
+Episode  400 | Last 100 mean score: -20.76 | Gradient norm: 3.891e+00 | Baseline t=0: -1.128 | Elapsed: 11.8 min
+Episode  500 | Last 100 mean score: -20.81 | Gradient norm: 4.631e+00 | Baseline t=0: -1.121 | Elapsed: 14.5 min
+Episode  600 | Last 100 mean score: -20.53 | Gradient norm: 4.174e+00 | Baseline t=0: -1.074 | Elapsed: 17.4 min
+Episode  700 | Last 100 mean score: -20.63 | Gradient norm: 5.737e+00 | Baseline t=0: -1.022 | Elapsed: 20.2 min
+Episode  800 | Last 100 mean score: -20.69 | Gradient norm: 3.423e+00 | Baseline t=0: -0.933 | Elapsed: 22.9 min
+Episode  900 | Last 100 mean score: -20.70 | Gradient norm: 5.305e+00 | Baseline t=0: -0.929 | Elapsed: 25.6 min
+Episode 1000 | Last 100 mean score: -20.56 | Gradient norm: 4.893e+00 | Baseline t=0: -0.876 | Elapsed: 28.5 min
+
+Pong baseline training complete.
+Results saved in: pong_runs/time_baseline_seed42_lr0001
+
+
+CELL 47
+            method  episodes  first_100_mean_score  last_100_mean_score  best_100_mean_score  best_window_end  first_100_mean_discounted_return  last_100_mean_discounted_return
+  Without baseline      1000              -20.3900             -20.6500             -20.2600              128                           -1.3536                          -1.2145
+With time baseline      1000              -20.4400             -20.5600             -20.3600              169                           -1.3700                          -0.8635
+
+Comparison plot saved to: pong_results/baseline_training_comparison.png
+Baseline learning curve saved to: pong_runs/time_baseline_seed42_lr0001/learning_curve.png
+No parameter updates performed.
+
+
+CELL 48
+
+NO_BASELINE
+Checkpoint | Mean score | Sample SD | Mean discounted return
+       200 |    -20.533 |     0.629 |              -1.347487
+       400 |    -20.533 |     0.629 |              -1.312699
+       600 |    -20.700 |     0.702 |              -1.294767
+       800 |    -20.867 |     0.434 |              -1.287419
+      1000 |    -20.633 |     0.490 |              -1.258926
+
+TIME_BASELINE
+Checkpoint | Mean score | Sample SD | Mean discounted return
+       200 |    -20.633 |     0.556 |              -1.209488
+       400 |    -20.733 |     0.450 |              -1.050880
+       600 |    -20.333 |     0.922 |              -1.128960
+       800 |    -20.567 |     0.504 |              -0.944761
+      1000 |    -20.500 |     0.682 |              -0.752151
+
+SELECTED CHECKPOINTS
+       method  checkpoint_episode  mean_score  mean_discounted_return
+  no_baseline                 400  -20.533333               -1.312699
+time_baseline                 600  -20.333333               -1.128960
+
+Results saved in: pong_results/checkpoint_validation
+No parameter updates performed.
+
+
+CELL 49
+
+no_baseline: checkpoint 400, resuming at episode 1
+Completed 100/500
+Completed 200/500
+Completed 300/500
+Completed 400/500
+Completed 500/500
+
+
+CELL 49
+
+FINAL RESULTS: no_baseline
+Mean reward: -20.406
+Sample SD: 0.774
+Approximate 95% CI: [-20.474, -20.338]
+Range: [-21, -17]
+Truncated episodes: 0
+Saved in: pong_runs/no_baseline_seed42_lr0001/final_evaluation_checkpoint00400
+
+time_baseline: checkpoint 600, resuming at episode 1
+Completed 100/500
+Completed 200/500
+Completed 300/500
+Completed 400/500
+Completed 500/500
+
+
+CELL 49
+
+FINAL RESULTS: time_baseline
+Mean reward: -20.552
+Sample SD: 0.629
+Approximate 95% CI: [-20.607, -20.497]
+Range: [-21, -18]
+Truncated episodes: 0
+Saved in: pong_runs/time_baseline_seed42_lr0001/final_evaluation_checkpoint00600
+
+Both final evaluations complete. No parameter updates performed.
+
+
+CELL 50
+Processed 25/100 episodes
+Processed 50/100 episodes
+Processed 75/100 episodes
+Processed 100/100 episodes
+
+FROZEN-POLICY GRADIENT VARIANCE
+Without baseline: 6.264655e+02
+With baseline:    8.816024e+01
+Variance ratio (with / without): 0.140726
+Estimated reduction: 85.93%
+Parameter updates: 0
+Saved in: pong_runs/time_baseline_seed42_lr0001/gradient_variance
+
+
+CELL 51
+Created: pong_results_backup.zip
+Files included: 55
+Archive size: 227.52 MB
+
+
+CELL 52
+CartPole backup and saved models were not found in this runtime. Stop here and send me this output.

@@ -1,0 +1,22 @@
+test_baseline_changes_sample_gradients_but_not_expectation (test_rl.AnalyticalPolicyGradientTests.test_baseline_changes_sample_gradients_but_not_expectation) ... ok
+test_closed_form_matches_finite_difference_of_true_objective (test_rl.AnalyticalPolicyGradientTests.test_closed_form_matches_finite_difference_of_true_objective) ... ok
+test_expected_gradient_matches_closed_form_both_implementations (test_rl.AnalyticalPolicyGradientTests.test_expected_gradient_matches_closed_form_both_implementations) ... ok
+test_gradient_descent_on_loss_increases_true_expected_reward (test_rl.AnalyticalPolicyGradientTests.test_gradient_descent_on_loss_increases_true_expected_reward) ... ok
+test_negative_controls_detect_missing_discount_and_baseline_bias (test_rl.AnalyticalPolicyGradientTests.test_negative_controls_detect_missing_discount_and_baseline_bias) ... ok
+test_baseline_uses_only_visited_times_and_preserves_old_array (test_rl.ReturnAndBaselineTests.test_baseline_uses_only_visited_times_and_preserves_old_array) ... ok
+test_chunking_and_batch_averaging (test_rl.ReturnAndBaselineTests.test_chunking_and_batch_averaging) ... ok
+test_gamma_zero_removes_later_decision_gradient (test_rl.ReturnAndBaselineTests.test_gamma_zero_removes_later_decision_gradient) ... ok
+test_sparse_signed_rewards_and_discount_edges (test_rl.ReturnAndBaselineTests.test_sparse_signed_rewards_and_discount_edges) ... ok
+test_zero_baseline_same_loss_and_gradient (test_rl.ReturnAndBaselineTests.test_zero_baseline_same_loss_and_gradient) ... ok
+test_preprocessing_preserves_input_and_removes_both_backgrounds (test_rl.RolloutTests.test_preprocessing_preserves_input_and_removes_both_backgrounds) ... ok
+test_stops_on_termination_or_truncation_and_maps_actions (test_rl.RolloutTests.test_stops_on_termination_or_truncation_and_maps_actions) ... ok
+test_analytical_parameter_limits (test_rl.ShuttleTests.test_analytical_parameter_limits) ... ok
+test_capped_probability_mass (test_rl.ShuttleTests.test_capped_probability_mass) ... ok
+test_costs_and_empty_partial_full_queues (test_rl.ShuttleTests.test_costs_and_empty_partial_full_queues) ... ok
+test_independent_bellman_residual_and_policy_evaluation (test_rl.ShuttleTests.test_independent_bellman_residual_and_policy_evaluation) ... ok
+test_two_period_dp_against_exhaustive_contingent_policies (test_rl.ShuttleTests.test_two_period_dp_against_exhaustive_contingent_policies) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.166s
+
+OK

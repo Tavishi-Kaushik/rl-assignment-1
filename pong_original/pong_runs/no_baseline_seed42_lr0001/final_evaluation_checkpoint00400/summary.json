@@ -1,0 +1,20 @@
+{
+  "method": "no_baseline",
+  "checkpoint_episode": 400,
+  "checkpoint_path": "pong_runs/no_baseline_seed42_lr0001/checkpoint_00400.pt",
+  "evaluation_episodes": 500,
+  "policy": "stochastic; actions sampled from frozen policy",
+  "environment_seed_start": 9000000,
+  "action_seed_start": 90000,
+  "mean_reward": -20.406,
+  "sample_standard_deviation": 0.7735377957429656,
+  "approximate_95_percent_ci": [
+    -20.473803577302306,
+    -20.338196422697692
+  ],
+  "minimum_reward": -21.0,
+  "maximum_reward": -17.0,
+  "positive_score_fraction": 0.0,
+  "mean_discounted_return": -1.195880756205108,
+  "truncated_episodes": 0
+}

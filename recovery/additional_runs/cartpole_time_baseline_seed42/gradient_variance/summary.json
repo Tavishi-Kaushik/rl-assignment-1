@@ -1,0 +1,13 @@
+{
+  "trajectories": 100,
+  "checkpoint_episode": 400,
+  "checkpoint_sha256": "0aa8e8d3ce0e25a504e806a2218b35b205e35d2b222eeb3aaf6befae24962632",
+  "without_baseline": 18895.83373801145,
+  "with_baseline": 2.545578800699596,
+  "variance_ratio": 0.00013471640553117432,
+  "reduction_percent": 99.98652835944688,
+  "estimator": "Sum of componentwise sample variances, ddof=1, paired trajectories",
+  "baseline_frozen": true,
+  "parameter_updates": 0,
+  "limitation": "Conditional on one frozen policy; not between-training-seed variability."
+}

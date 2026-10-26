@@ -1,0 +1,30 @@
+{
+  "environment": "ALE/Pong-v5",
+  "seed": 42,
+  "episodes": 1000,
+  "batch_size": 4,
+  "learning_rate": 0.001,
+  "gamma": 0.99,
+  "baseline": "time-dependent EMA from previous batches",
+  "return_normalization": false,
+  "point_boundary_return_reset": false,
+  "policy_actions": [
+    2,
+    3
+  ],
+  "observation": "difference of consecutive preprocessed 80x80 frames",
+  "frameskip": 4,
+  "repeat_action_probability": 0.25,
+  "hidden_units": 128,
+  "activation": "ReLU",
+  "gradient_chunk_size": 256,
+  "loss": "-sum_t gamma^t * G_t * log_prob_t",
+  "device": "cpu",
+  "gymnasium_version": "1.4.0",
+  "ale_version": "0.12.1",
+  "torch_version": "2.11.0+cpu",
+  "environment_seed_start": 3000000,
+  "baseline_alpha": 0.1,
+  "baseline_initial_value": 0.0,
+  "baseline_update_timing": "after policy update"
+}

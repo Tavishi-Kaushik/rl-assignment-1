@@ -1,0 +1,11 @@
+episode,environment_seed,score,steps,first_reward_step,scoring_events,terminated,truncated
+1,1000000,-21.0,946,64,21,True,False
+2,1000001,-20.0,982,64,22,True,False
+3,1000002,-21.0,1005,64,21,True,False
+4,1000003,-21.0,947,64,21,True,False
+5,1000004,-21.0,887,64,21,True,False
+6,1000005,-20.0,1041,124,22,True,False
+7,1000006,-20.0,1102,64,22,True,False
+8,1000007,-20.0,1102,64,22,True,False
+9,1000008,-21.0,885,64,21,True,False
+10,1000009,-21.0,824,64,21,True,False

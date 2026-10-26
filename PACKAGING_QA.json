@@ -1,0 +1,17 @@
+{
+  "pdf_pages": 16,
+  "figures": 12,
+  "pdf_visual_review": "passed",
+  "pdf_repository_fields": "three valid empty interactive fields; actual URL not supplied",
+  "packaged_experiment_byte_identity": "passed",
+  "source_and_notebook_compilation": "passed",
+  "raw_500_episode_and_gradient_statistics": "recomputed and matched",
+  "previously_executed_test_suite": {
+    "methods": 17,
+    "passed": true,
+    "log": "review/independent_checks/test_log.txt"
+  },
+  "packaging_runtime_test_rerun": "Full suite not rerun: PyTorch absent; runtime dependency directory read-only. Numerical results-only verification passed.",
+  "finalization_workflow": "tested in separate temporary copy; dummy test URL not included in delivery",
+  "training_performed": false
+}

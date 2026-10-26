@@ -1,0 +1,7 @@
+{
+  "python": "3.13.16",
+  "numpy": "2.1.3",
+  "torch": "2.11.0+cpu",
+  "gymnasium": "1.4.0",
+  "matplotlib": "3.10.0"
+}

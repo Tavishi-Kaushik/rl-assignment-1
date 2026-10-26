@@ -1,0 +1,251 @@
+{
+  "archives_crc_valid": true,
+  "training_performed": false,
+  "experiments": {
+    "cartpole_no_baseline": {
+      "n": 500,
+      "mean": 141.99,
+      "sample_sd": 43.09757187363118,
+      "ci95": [
+        138.21233126531482,
+        145.7676687346852
+      ],
+      "minimum": 82.0,
+      "maximum": 383.0,
+      "reaching_500": 0,
+      "truncated": 0,
+      "checkpoint": 600,
+      "checkpoint_selection_matches": true,
+      "checkpoint_parameters": 898,
+      "first100": 32.1,
+      "last100": 98.63,
+      "highest100": 156.19,
+      "highest100_window_end": 712,
+      "training_episodes": 1000,
+      "validation": [
+        [
+          200,
+          42.52,
+          17.352480393177437
+        ],
+        [
+          400,
+          28.7,
+          15.252662729847914
+        ],
+        [
+          600,
+          144.52,
+          19.952884926674734
+        ],
+        [
+          800,
+          98.66,
+          19.440794968132366
+        ],
+        [
+          1000,
+          104.2,
+          19.886402369405722
+        ]
+      ]
+    },
+    "cartpole_time_baseline": {
+      "n": 500,
+      "mean": 344.44,
+      "sample_sd": 75.67337258664551,
+      "ci95": [
+        337.806936436536,
+        351.073063563464
+      ],
+      "minimum": 73.0,
+      "maximum": 500.0,
+      "reaching_500": 6,
+      "truncated": 6,
+      "checkpoint": 400,
+      "checkpoint_selection_matches": true,
+      "checkpoint_parameters": 898,
+      "first100": 51.04,
+      "last100": 196.43,
+      "highest100": 365.2200000000001,
+      "highest100_window_end": 727,
+      "training_episodes": 1000,
+      "validation": [
+        [
+          200,
+          136.26,
+          19.81788619253483
+        ],
+        [
+          400,
+          344.66,
+          19.998407501323282
+        ],
+        [
+          600,
+          282.88,
+          19.999615781371872
+        ],
+        [
+          800,
+          208.34,
+          19.99875488479473
+        ],
+        [
+          1000,
+          200.88,
+          19.998670909648617
+        ]
+      ]
+    },
+    "pong_no_baseline": {
+      "n": 500,
+      "mean": -20.406,
+      "sample_sd": 0.7735377957429656,
+      "ci95": [
+        -20.473803577302306,
+        -20.338196422697692
+      ],
+      "minimum": -21.0,
+      "maximum": -17.0,
+      "reaching_500": 0,
+      "truncated": 0,
+      "checkpoint": 400,
+      "checkpoint_selection_matches": true,
+      "checkpoint_parameters": 819586,
+      "first100": -20.39,
+      "last100": -20.65,
+      "highest100": -20.259999999999998,
+      "highest100_window_end": 128,
+      "training_episodes": 1000,
+      "validation": [
+        [
+          200,
+          -20.533333333333335,
+          -1.3474872517386036
+        ],
+        [
+          400,
+          -20.533333333333335,
+          -1.3126987137199408
+        ],
+        [
+          600,
+          -20.7,
+          -1.2947673474408288
+        ],
+        [
+          800,
+          -20.866666666666667,
+          -1.2874193260791422
+        ],
+        [
+          1000,
+          -20.633333333333333,
+          -1.2589256977463306
+        ]
+      ]
+    },
+    "pong_time_baseline": {
+      "n": 500,
+      "mean": -20.552,
+      "sample_sd": 0.6293553657137638,
+      "ci95": [
+        -20.607165430085818,
+        -20.49683456991418
+      ],
+      "minimum": -21.0,
+      "maximum": -18.0,
+      "reaching_500": 0,
+      "truncated": 0,
+      "checkpoint": 600,
+      "checkpoint_selection_matches": true,
+      "checkpoint_parameters": 819586,
+      "first100": -20.44,
+      "last100": -20.56,
+      "highest100": -20.36,
+      "highest100_window_end": 169,
+      "training_episodes": 1000,
+      "validation": [
+        [
+          200,
+          -20.633333333333333,
+          -1.209487672419734
+        ],
+        [
+          400,
+          -20.733333333333334,
+          -1.050879866418429
+        ],
+        [
+          600,
+          -20.333333333333332,
+          -1.1289599685543708
+        ],
+        [
+          800,
+          -20.566666666666666,
+          -0.9447612894281406
+        ],
+        [
+          1000,
+          -20.5,
+          -0.7521514326675366
+        ]
+      ]
+    }
+  },
+  "paired_comparisons": {
+    "cartpole": {
+      "mean_baseline_minus_without": 202.45,
+      "ci95": [
+        195.51309191339513,
+        209.38690808660485
+      ],
+      "scope": "Conditional on these two selected policies, not a training-seed population effect"
+    },
+    "pong": {
+      "mean_baseline_minus_without": -0.146,
+      "ci95": [
+        -0.2335960538271684,
+        -0.058403946172831595
+      ],
+      "scope": "Conditional on these two selected policies, not a training-seed population effect"
+    }
+  },
+  "cartpole_gradient_variance": {
+    "without_baseline": 18895.83373801145,
+    "with_baseline": 2.545578800699596,
+    "reduction_percent": 99.98652835944688,
+    "trajectories": 100
+  },
+  "pong_gradient_variance": {
+    "without_baseline": 626.4654624427694,
+    "with_baseline": 88.16023919936333,
+    "reduction_percent": 85.92735841244925,
+    "trajectories": 100
+  },
+  "saved_validation": {
+    "tests_run": 17,
+    "failures": 0,
+    "errors": 0,
+    "passed": true,
+    "analytical_cases": 20,
+    "max_gradient_error": 4.112720453086638e-08,
+    "source_sha256": "2656327c6104926cfe82ce0938cd742c3980c8fc5c8e86a21ef07505b05751f8",
+    "versions": {
+      "python": "3.13.16",
+      "numpy": "2.1.3",
+      "torch": "2.11.0+cpu",
+      "gymnasium": "1.4.0",
+      "ale-py": "0.12.1",
+      "pandas": "2.2.3",
+      "matplotlib": "3.10.0",
+      "reportlab": "not installed"
+    },
+    "training_performed": false,
+    "scope": "Unit and independent analytical checks; not proof of game-learning success"
+  },
+  "provenance_note": "CartPole recovery is new; original CartPole raw files remain unavailable. Pong is original.",
+  "pong_metadata_issue": "Baseline config loss string omits b_t, although the original implementation subtracts the lagged baseline."
+}

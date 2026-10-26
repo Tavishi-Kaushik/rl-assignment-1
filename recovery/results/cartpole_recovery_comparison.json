@@ -1,0 +1,18 @@
+[
+  {
+    "method": "no_baseline",
+    "selected_episode": 600,
+    "evaluation_episodes": 500,
+    "mean_reward": 141.99,
+    "sample_sd": 43.09757187363118,
+    "reached_500_percent": 0.0
+  },
+  {
+    "method": "time_baseline",
+    "selected_episode": 400,
+    "evaluation_episodes": 500,
+    "mean_reward": 344.44,
+    "sample_sd": 75.67337258664551,
+    "reached_500_percent": 1.2
+  }
+]

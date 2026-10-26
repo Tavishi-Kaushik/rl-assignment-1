@@ -1,0 +1,7 @@
+{
+  "gamma": 0.99,
+  "parameter_updates": 0,
+  "episodes_per_candidate": 20,
+  "interpretation": "Exploratory timing/exploration diagnostic, not a causal proof or a new final test.",
+  "hypothesis": "Higher discounted return may reflect delaying early losses without increasing full-game score."
+}

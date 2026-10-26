@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.zip
+output/
+checks_rerun/
+probe_rerun/
+fresh_cartpole/
